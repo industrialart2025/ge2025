@@ -1,11 +1,51 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>卒展サイト</title>
+  <title>Google Spreadsheet Data</title>
 </head>
 <body>
-    あいうえお
+  <table id="data-table">
+    <thead>
+      <tr>
+        <th>Date</th>
+        <th>Caption</th>
+        <th>Link</th>
+      </tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+
+  <script>
+    fetch('https://script.googleusercontent.com/macros/echo?user_content_key=Qp9kPaLdOgw6WFbXbpw7FC8vlJnoy-Dtm5vWQY__BYeaOjTgqAVd4Ywow4TNzZJOjoS2vMBFMHJixjy32pvva0NWtXGyhBQOm5_BxDlH2jW0nuo2oDemN9CCS2h10ox_1xSncGQajx_ryfhECjZEnIO58wk7JDxoYOSZRhYvPhC5bu-oztgS5GASuCHGX8c20rlX_LYDgoqaYzvi3I4T2NNNJl5n9lrzQ-I2-c89x4-qw2NLCZ-Fs9z9Jw9Md8uu&lib=MODLHgXqhhLUdWV47iiDViD74GhYF4No3')
+      .then(response => response.json())
+      .then(data => {
+        var dataTable = document.getElementById('data-table');
+        var tbody = dataTable.querySelector('tbody');
+
+        data.forEach(function(item) {
+          var row = document.createElement('tr');
+
+          var dateCell = document.createElement('td');
+          dateCell.textContent = item.date;
+
+          var captionCell = document.createElement('td');
+          captionCell.textContent = item.caption;
+
+          var linkCell = document.createElement('td');
+          if (item.link) {
+            var link = document.createElement('a');
+            link.href = item.link;
+            link.textContent = '詳細';
+            linkCell.appendChild(link);
+          }
+
+          row.appendChild(dateCell);
+          row.appendChild(captionCell);
+          row.appendChild(linkCell);
+
+          tbody.appendChild(row);
+        });
+      });
+  </script>
 </body>
 </html>
