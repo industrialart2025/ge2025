@@ -1,0 +1,58 @@
+[
+  {
+    "title": "タイトル1",
+    "studio": "インテリアデザイン",
+    "genre": "\"空間",
+    "ex_number": " プロダクト\"",
+    "image": "1",
+    "notion_URL\r": "https://drive.google.com/file/d/12_C4ZUiaY7Ta2NWVujgUUq-FyGraZBmG/view?usp=sharing"
+  },
+  {
+    "title": "タイトル2",
+    "studio": "トランスポーテーションデザイン",
+    "genre": "\"論文",
+    "ex_number": " 空間\"",
+    "image": "2",
+    "notion_URL\r": "https://drive.google.com/file/d/1zRCkJFezG4mWWWaktZw0sCczoECHcIW6/view?usp=drive_link"
+  },
+  {
+    "title": "タイトル3",
+    "studio": "ソフトウェアデザイン",
+    "genre": "\"アプリケーション",
+    "ex_number": " サービス\"",
+    "image": "3",
+    "notion_URL\r": "https://drive.google.com/file/d/18EP-SNAtoHWUKqw36F_uhR7aU9kAZqbW/view?usp=drive_link"
+  },
+  {
+    "title": "タイトル4",
+    "studio": "製品・サービスデザイン",
+    "genre": "\"模型",
+    "ex_number": " プロダクト",
+    "image": " 論文\"",
+    "notion_URL\r": "4"
+  },
+  {
+    "title": "タイトル5",
+    "studio": "エルゴノミックデザイン",
+    "genre": "\"論文",
+    "ex_number": " ポスター",
+    "image": " サービス\"",
+    "notion_URL\r": "5"
+  },
+  {
+    "title": "タイトル6",
+    "studio": "空間デザイン",
+    "genre": "\"空間",
+    "ex_number": " インスタレーション\"",
+    "image": "6",
+    "notion_URL\r": "https://drive.google.com/file/d/1NqyXedV3VDv5xwSFFsafHAohyndHVng6/view?usp=drive_link"
+  },
+  {
+    "title": "タイトル7",
+    "studio": "インテリアデザイン",
+    "genre": "\"インタラクティブ",
+    "ex_number": " 空間\"",
+    "image": "7",
+    "notion_URL\r": "https://drive.google.com/file/d/1XDCA-hIGIVLTmUHgbH0LCk2qt2WFy-ib/view?usp=drive_link"
+  }
+]
