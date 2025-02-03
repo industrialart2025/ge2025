@@ -1,51 +1,26 @@
 <!DOCTYPE html>
-<html>
+<html lang="ja">
+
 <head>
-  <title>Google Spreadsheet Data</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="./search/index.css" rel="stylesheet" type="text/css">
+  <title>Document</title>
 </head>
+
 <body>
-  <table id="data-table">
-    <thead>
-      <tr>
-        <th>Date</th>
-        <th>Caption</th>
-        <th>Link</th>
-      </tr>
-    </thead>
-    <tbody></tbody>
-  </table>
+  <h1>Search</h1>
+  <script src="./search/toJSON.js"></script>
+  <script src="./search/index.js"></script>
+  <div class="search"></div>
+  <ul>
+    <li class="test-titles">
+      <img class="test-img" />
+    </li>
+  </ul>
 
-  <script>
-    fetch('https://script.google.com/macros/s/AKfycbwt_oE4mo7AC5f4j1SFWaeEiZU6VkLzTvf1E_owCvpOy0sKqUbKwdOlrSEQp2Xfs8rElg/exec')
-      .then(response => response.json())
-      .then(data => {
-        var dataTable = document.getElementById('data-table');
-        var tbody = dataTable.querySelector('tbody');
 
-        data.forEach(function(item) {
-          var row = document.createElement('tr');
 
-          var dateCell = document.createElement('td');
-          dateCell.textContent = item.date;
-
-          var captionCell = document.createElement('td');
-          captionCell.textContent = item.caption;
-
-          var linkCell = document.createElement('td');
-          if (item.link) {
-            var link = document.createElement('a');
-            link.href = item.link;
-            link.textContent = '詳細';
-            linkCell.appendChild(link);
-          }
-
-          row.appendChild(dateCell);
-          row.appendChild(captionCell);
-          row.appendChild(linkCell);
-
-          tbody.appendChild(row);
-        });
-      });
-  </script>
 </body>
+
 </html>

@@ -6,7 +6,7 @@ function extractFileId(url) {
 }
 
 async function getJson() {
-    const filePath = "testList.csv"; // CSVファイルのパス
+    const filePath = "./search/testList.csv"; // CSVファイルのパス
 
     try {
         // CSVをJSONに変換
@@ -51,8 +51,7 @@ let currentFilter = null;
 
 function selectChange(selectKeys) {
     // フィルターボタンのためのコンテナを作成
-    const filterContainer = document.createElement('div');
-    filterContainer.id = 'filter-buttons';
+    const filterContainer = document.querySelector('.search');
     document.body.appendChild(filterContainer);
 
     const filterItem = ["studio", "genre"]
