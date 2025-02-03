@@ -51,7 +51,7 @@ let currentFilter = null;
 
 function selectChange(selectKeys) {
     // フィルターボタンのためのコンテナを作成
-    const filterContainer = document.querySelector('.search');
+    const filterContainer = document.querySelector('.button-container');
     document.body.appendChild(filterContainer);
 
     const filterItem = ["studio", "genre"]
@@ -68,13 +68,14 @@ function selectChange(selectKeys) {
 }
 
 function selectChange2(selectList) {
-    const oldButtons = document.getElementById('secondary-buttons');
-    if (oldButtons) {
-        oldButtons.innerHTML = '';
-    } else {
-        const container = document.createElement('div');
-        container.id = 'secondary-buttons';
+    let container = document.querySelector('.button-container-secondary');
+    
+    if (!container) {
+        container = document.createElement('div');
+
         document.body.appendChild(container);
+    } else {
+        container.innerHTML = ''; // 前のボタンをクリア
     }
 
     // すべて表示ボタンを追加
@@ -84,19 +85,21 @@ function selectChange2(selectList) {
         currentFilter = null;
         updateArticleList();
     });
-    document.getElementById('secondary-buttons').appendChild(allButton);
+    container.appendChild(allButton);
 
+    // フィルター用ボタンを追加
     selectList.map(value => {
-        const select = document.createElement("button");
-        select.textContent = value;
-        select.addEventListener("click", () => {
+        const button = document.createElement("button");
+        button.textContent = value;
+        button.addEventListener("click", () => {
             console.log("選択された値", value);
             currentFilter = value;
             updateArticleList();
         });
-        document.getElementById('secondary-buttons').appendChild(select);
-    })
+        container.appendChild(button);
+    });
 }
+
 
 function listSet(json, key) {
     if (!key) return [];
