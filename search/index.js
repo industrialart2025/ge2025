@@ -26,24 +26,32 @@ async function getJson(filePath) {
 
 //jsonからli要素を描画する関数
 function htmlToElement(json) {
-    const testTitlesElement = document.querySelector(".test-titles");
+    const eachItem = document.querySelector(".test-titles");
 
-    testTitlesElement.innerHTML = ''; // 親要素内の子要素をすべて削除
+    eachItem.innerHTML = ''; // 親要素内の子要素をすべて削除
 
     // リストに追加
     json.map(item => {
         const listItem = document.createElement("li");
         listItem.textContent = `タイトル:${item.title}`; // JSONデータのプロパティに合わせて修正
-        testTitlesElement.appendChild(listItem);
+        eachItem.appendChild(listItem);
 
         const studioItem = document.createElement("li");
         studioItem.textContent = `スタジオ:${item.studio}`; // JSONデータのプロパティに合わせて修正
-        //testTitlesElement.appendChild(studioItem);
+        eachItem.appendChild(studioItem);
+        console.log(Object.keys(item));
+        //console.log(item["notion_URL\r"]);
+
+        const link = document.createElement("a");
+        link.href = item["notion_URL\r"]
+        link.target = "_blank";
+        eachItem.appendChild(link);
 
         const imgItem = document.createElement("img")
-        const fileId = extractFileId(item["notion_URL\r"]) // JSONデータのプロパティに合わせて修正
-        imgItem.src = `https://lh3.googleusercontent.com/d/${fileId}`; // 画像のURLを設定
-        //testTitlesElement.appendChild(imgItem);
+        const fileId = extractFileId(item.image) // JSONデータのプロパティに合わせて修正
+        imgItem.src = `https://lh3.google.com/u/0/d/${fileId}`; // 画像のURLを設定
+        link.appendChild(imgItem);
+
     });
 }
 
