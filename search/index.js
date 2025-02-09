@@ -15,7 +15,7 @@ async function getJson(filePath) {
         }
 
         const csvString = await response.text();
-        const jsonResult = csvToJson(csvString);
+        const jsonResult = toJson(csvString);
         console.log(jsonResult);
 
         return jsonResult
@@ -130,7 +130,7 @@ function updateArticleList() {
 }
 
 document.addEventListener("DOMContentLoaded", async () => {
-    const filePath = "./search/reserachList.csv"; // CSVファイルのパス
+    const filePath = "./search/reserachList.tsv"; // CSVファイルのパス
     jsonResult = await getJson(filePath);
     
     selectChangeEither(Object.keys(jsonResult[0]));
