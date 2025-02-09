@@ -1,5 +1,3 @@
-// ge2025/search/toJSON.js
-
 function csvToJson(csvString, delimiter = ",") {
     // 行を分割
     const rows = csvString.trim().split("\n");
@@ -11,7 +9,13 @@ function csvToJson(csvString, delimiter = ",") {
     return rows.slice(1).map(row => {
         const values = row.split(delimiter);
         return headers.reduce((obj, header, index) => {
-            obj[header] = values[index];
+            // 値から引用符を削除
+            let value = values[index];
+            if (value) {
+                // 前後の引用符を削除
+                value = value.replace(/^["']|["']$/g, '');
+            }
+            obj[header] = value;
             return obj;
         }, {});
     });
