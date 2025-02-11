@@ -1,0 +1,275 @@
+/* ===== 全体の基本スタイル ===== */
+body {
+    font-family: sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #111;
+    color: #fff;
+}
+
+/* ===== ヘッダーエリア ===== */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2vh 5vw;
+    background-color: black;
+}
+
+/* 言語切り替え用（英語は最初隠しておく） */
+.lang-en {
+    display: none;
+}
+
+.lang-ja {
+    display: block;
+}
+
+/* メニュー開閉ボタン（使うかはしらね。機能なし） */
+.logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.menu-toggle {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    color: white;
+    cursor: pointer;
+}
+
+/* ===== ヒーローセクション（後で画像に置き換える青いとこ） ===== */
+.hero {
+    position: relative;
+    height: 60vh;
+    background-color: blue; 
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    text-align: left;
+    padding-left: 5vw;
+}
+
+
+.text-container {
+    position: relative;
+    z-index: 1;
+    text-align: left;
+    max-width: 100%;
+    padding-left: 5vw;
+}
+
+h1, h2 {
+    margin: 0;
+    line-height: 1.5;
+    font-size: 2rem;
+    text-align: left;
+    white-space: nowrap; /* 改行を禁止 */
+}
+
+p{
+    font-size: 0.9rem;  
+}
+
+
+
+
+
+
+
+
+/* ===== Web展示の画像エリア（仮の画像ボックス） ===== */
+.image-placeholder {
+    width: 25vw;
+    aspect-ratio: 16 / 9; /* 16:9の比率を維持 */
+    max-width: 30vw;
+    background-color: grey;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1rem;
+    text-align: center;
+    margin: 2vh auto;
+    padding: 2vh;
+}
+
+
+/* ===== コンテンツエリア（説明文とかが入る） ===== */
+.content-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    max-width: 90vw;
+    margin: auto;
+    padding-top: 7vh; /* さらに上に配置調整 */
+}
+
+
+/* 文章用のブロック（説明テキストのエリア） */
+.text-section {
+    padding: 4vh 2vw;
+    max-width: 30vw;
+}
+
+
+/* pc版で説明んとこを三つ並べるためのやつ */
+.description, .web-exhibition, .information {
+    flex: 1;
+    padding: 4vh 2vw;
+    max-width: 28vw;
+    line-height: 1.5;
+}
+
+
+/* 行間開け */
+.expanded-line {
+    line-height: 2.5;
+}
+
+.sns {
+    max-width: 90vw;
+    margin: auto;
+    padding: 2vh 5vw;
+}
+
+
+
+/* ======== 一番下のとこ(今考えたらフッターでつくりゃよかった) ======== */
+.tyosakukenn {
+    max-width: 90vw;
+    margin: auto;
+    padding: 1vh 5vw;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    line-height: 1;
+}
+ /* リンクの色を白に設定 */
+ .privacy-link {
+    color: white;
+}
+
+
+
+
+/* ボタンのスタイル */
+.button-custom {
+    background-color: black;
+    color: white;
+    border: 2px solid white;
+    padding: 1.2vh 2.5vw;
+    font-size: 1rem;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    margin: 2vh auto;
+    cursor: pointer;
+    width: fit-content;
+}
+
+.button-custom:hover {
+    background-color: white;
+    color: black;
+}
+
+
+
+
+
+/* pc版サイトの時だけ出てくる文字とかアイコン */
+.event-details {
+    position: absolute;
+    bottom: 25vh;
+    right: 5vw;
+    
+    color: white;
+    text-align: right;
+    padding: 1vh;
+    max-width: 40vw;
+   
+    font-weight: bold;
+}
+.icon-details {
+    position: absolute;
+    bottom: 22vh; 
+    left: 1vw;
+    font-size: 3rem;
+    color: white;
+    text-align: left;
+    padding: 1vh;
+    max-width: 4vw;
+}
+
+
+/* ちっさい文字*/
+.small-text {
+    font-size: 0.8rem;
+}
+.small-small-text {
+    font-size: 0.6rem;
+}
+/* 全体のテキストのサイズを大きく */
+.event-details p {
+    font-size: 1.5rem; /* 通常のテキストを大きく */
+}
+
+/* iframe(地図) レスポンシブ対応 */
+.responsive-iframe {
+    width: 30vw; 
+    height: 30vw; 
+    max-width: 35vw;
+    max-height: 35vw;
+    border: none;
+    display: block;
+    margin-left: 0;
+}
+
+
+
+/* スマホ用 */
+@media screen and (max-width: 600px) {
+    h1 {
+        font-size: 1.5rem;
+    }
+    h2 {
+        font-size: 1.2rem;
+    }
+    .header {
+        flex-direction: row;
+    }
+    .hero {
+        justify-content: flex-start;
+        text-align: left;
+        padding-left: 5vw;
+    }
+    .text-container {
+        max-width: 100%;
+        text-align: left;
+        padding-left: 5vw;
+    }
+    .content-container {
+        flex-direction: column;
+        align-items: center;
+        max-width: 90vw;
+    }
+    .map{
+        width:100%;
+    }
+    .description, .web-exhibition, .information, .sns {
+        padding: 2vh 5vw;
+        max-width: 90vw;
+    }
+    
+    .event-details, .icon-details {
+        display: none;
+    }
+    .responsive-iframe {
+        width: 90vw;
+        height: 90vw;
+    }
+}
