@@ -38,6 +38,15 @@ function htmlToElement(json) {
 
     // リストに追加
     json.map(item => {
+        const exNumItem = document.createElement("li");
+        console.log("item",item.ex_number);
+        if(item.ex_number !== "#N/A"){
+            exNumItem.textContent = `# ${item.ex_number}`; // JSONデータのプロパティに合わせて修正
+        }else{
+            exNumItem.textContent = "# Web Only" 
+        }
+        eachItem.appendChild(exNumItem);
+
         const listItem = document.createElement("li");
         listItem.textContent = `タイトル:${item.title}`; // JSONデータのプロパティに合わせて修正
         eachItem.appendChild(listItem);
