@@ -5,17 +5,17 @@ function extractFileId(url) {
     return match ? match[1] : null;
 }
 
-//csvをjsonに変換する関数
+//tsvをjsonに変換する関数
 async function getJson(filePath) {
     try {
-        // CSVをJSONに変換
+        // tsvをJSONに変換
         const response = await fetch(filePath);
         if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status}`);
         }
 
-        const csvString = await response.text();
-        const jsonResult = toJson(csvString);
+        const tsvString = await response.text();
+        const jsonResult = toJson(tsvString);
         console.log(jsonResult);
 
         return jsonResult
@@ -30,6 +30,12 @@ function htmlToElement(json) {
 
     eachItem.innerHTML = ''; // 親要素内の子要素をすべて削除
 
+    // 検索結果の表示
+    const jsonLength = json.length; 
+    const searchResult = document.createElement("h3");
+    searchResult.textContent = `検索結果:${jsonLength}件`;
+    eachItem.appendChild(searchResult); 
+
     // リストに追加
     json.map(item => {
         const listItem = document.createElement("li");
@@ -39,18 +45,22 @@ function htmlToElement(json) {
         const studioItem = document.createElement("li");
         studioItem.textContent = `スタジオ:${item.studio}`; // JSONデータのプロパティに合わせて修正
         eachItem.appendChild(studioItem);
-        console.log(Object.keys(item));
-        //console.log(item["notion_URL\r"]);
+
+        const genreItem = document.createElement("li");
+        genreItem.textContent = `ジャンル:${item.genre}`; // JSONデータのプロパティに合わせて修正
+        eachItem.appendChild(genreItem);
 
         const link = document.createElement("a");
-        link.href = item["notion_URL\r"]
+        link.href = item.notion_URL
         link.target = "_blank";
+        link.textContent = "くわしく見る";
         eachItem.appendChild(link);
+        
 
         const imgItem = document.createElement("img")
-        const fileId = extractFileId(item.image) // JSONデータのプロパティに合わせて修正
+        const fileId = extractFileId(item.image); // 画
         imgItem.src = `https://lh3.google.com/u/0/d/${fileId}`; // 画像のURLを設定
-        link.appendChild(imgItem);
+        eachItem.appendChild(imgItem);
 
     });
 }
@@ -71,8 +81,6 @@ function selectChangeEither(selectKeys) {
         select.addEventListener("click", () => {
             //デバッグログ
             selectedKey = key;
-            console.log("選択された値:", selectedKey);
-
             updateSecondaryButtons();
         });
         filterContainer.appendChild(select);
@@ -104,7 +112,6 @@ function selectChangeDetail(selectList) {
         const button = document.createElement("button");
         button.textContent = value;
         button.addEventListener("click", () => {
-            console.log("選択された値", value);
             currentFilter = value;
             updateArticleList();
         });
@@ -112,12 +119,29 @@ function selectChangeDetail(selectList) {
     });
 }
 
-//重複を削除する関数
+// 重複を削除する関数（ジャンルが配列の場合も対応）
 function listSet(json, key) {
     if (!key) return [];
-    const list = [...new Set(json.map(item => item[key]))].filter(value => value && value.length > 0);
-    console.log("list for key", key, list);
-    return list;
+
+    const list = json.flatMap(item => 
+        Array.isArray(item[key]) ? item[key] : [item[key]]
+    );
+
+    return [...new Set(list)].filter(value => value && value.length > 0);
+}
+
+// 記事リスト更新（ジャンルが配列のとき対応）
+function updateArticleList() {
+    const filteredList = currentFilter
+        ? jsonResult.filter(item =>
+            Array.isArray(item[selectedKey])
+                ? item[selectedKey].includes(currentFilter)
+                : item[selectedKey] === currentFilter
+        )
+        : jsonResult;
+
+    console.log("filteredList", filteredList);
+    htmlToElement(filteredList);
 }
 
 //スタジオまたは、ジャンルを選択するボタンを更新する関数
@@ -128,17 +152,9 @@ function updateSecondaryButtons() {
     }
 }
 
-function updateArticleList() {
-    const filteredList = currentFilter 
-        ? jsonResult.filter(item => item[selectedKey] === currentFilter)
-        : jsonResult;
-    
-    console.log("Filtered list:", filteredList);
-    htmlToElement(filteredList);
-}
 
 document.addEventListener("DOMContentLoaded", async () => {
-    const filePath = "./search/reserachList.tsv"; // CSVファイルのパス
+    const filePath = "./search/reserachList.tsv"; // TSVファイルのパス
     jsonResult = await getJson(filePath);
     
     selectChangeEither(Object.keys(jsonResult[0]));
