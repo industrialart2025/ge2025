@@ -184,15 +184,15 @@ p{
 /* pc版サイトの時だけ出てくる文字とかアイコン */
 .event-details {
     position: absolute;
-    bottom: 25vh;
+    bottom: 23vh;
     right: 5vw;
     
     color: white;
     text-align: right;
     padding: 1vh;
     max-width: 40vw;
-   
     font-weight: bold;
+    line-height: 0.4;
 }
 .icon-details {
     position: absolute;
