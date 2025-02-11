@@ -13,7 +13,7 @@ function toJson(filePath) {
 
             // ジャンルの場合、カンマまたは「、」で分割
             if (header === 'genre' && value) {
-                obj[header] = value.split(/[,、]/)
+                obj[header] = value.split(/[,、]/).map(g => g.trim());
             } else {
                 obj[header] = value;
             }
