@@ -33,15 +33,25 @@
     <!-- theme color -->
     <meta name="theme-color" content="#000000">
 
-    <!-- fonts -->
+    <!-- fonts 後にIAアカウントver.に変更　-->
+    <script> 
+        (function(d) {
+          var config = {
+            kitId: 'wlf7jxw',
+            scriptTimeout: 3000,
+            async: true
+          },
+          h=d.documentElement,t=setTimeout(function(){h.className=h.className.replace(/\bwf-loading\b/g,"")+" wf-inactive";},config.scriptTimeout),tk=d.createElement("script"),f=false,s=d.getElementsByTagName("script")[0],a;h.className+=" wf-loading";tk.src='https://use.typekit.net/'+config.kitId+'.js';tk.async=true;tk.onload=tk.onreadystatechange=function(){a=this.readyState;if(f||a&&a!="complete"&&a!="loaded")return;f=true;clearTimeout(t);try{Typekit.load(config)}catch(e){}};s.parentNode.insertBefore(tk,s)
+        })(document);
+    </script>
 
     <!-- css -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/destyle.css@1.0.15/destyle.css"> <!-- reset css -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css"> <!-- swiper css -->
 
-    <link rel="stylesheet" href="./css/default.css">
-    <link rel="stylesheet" href="./css/style.css">
-  </head>
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/css/style.css">
+</head>
 
 
 
