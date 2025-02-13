@@ -3,7 +3,7 @@ body {
     font-family: sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #111;
+    background-color: #000;
     color: #fff;
 }
 
@@ -12,7 +12,7 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 2vh 5vw;
+    padding: 2vh;
     background-color: black;
 }
 
@@ -25,10 +25,15 @@ body {
     display: block;
 }
 
-/* メニュー開閉ボタン（使うかはしらね。機能なし） */
+
 .logo {
     font-size: 1.5rem;
     font-weight: bold;
+}
+
+.logo img {
+     height: 5vh;
+     left:0;
 }
 
 .menu-toggle {
@@ -41,15 +46,32 @@ body {
 
 /* ===== ヒーローセクション（後で画像に置き換える青いとこ） ===== */
 .hero {
+    width: 100vw;
+    display: flex;
+    justify-content: center; 
+}
+
+.hero img {
+    width: 100%; 
+    height: auto; 
+    display: block; 
+}
+
+/* 画像に文字入れないってことになったらここ使うかも？とりあえず残しとく */
+/* .hero {
     position: relative;
-    height: 60vh;
+    height: 90vh;
     background-color: blue; 
+    background-image: url('images/0212_web/pc_top.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
     display: flex;
     align-items: center;
     justify-content: flex-start;
     text-align: left;
     padding-left: 5vw;
-}
+} */
 
 
 .text-container {
@@ -69,7 +91,8 @@ h1, h2 {
 }
 
 p{
-    font-size: 0.9rem;  
+    font-size: 0.9rem;
+    font-family: dnp-shuei-gothic-gin-std, sans-serif;
 }
 
 
@@ -132,6 +155,7 @@ p{
     max-width: 90vw;
     margin: auto;
     padding: 2vh 5vw;
+    line-height: 1;
 }
 
 
@@ -146,6 +170,7 @@ p{
     flex-direction: column;
     align-items: center;
     line-height: 1;
+    padding-top: 20vh;
 }
  /* リンクの色を白に設定 */
  .privacy-link {
@@ -229,7 +254,8 @@ p{
     margin-left: 0;
 }
 
-
+.heroPc{display: block;}
+.heroPhone{   display: none;}
 
 /* スマホ用 */
 @media screen and (max-width: 600px) {
@@ -260,16 +286,34 @@ p{
     .map{
         width:100%;
     }
-    .description, .web-exhibition, .information, .sns {
+    .description, .web-exhibition, .information{
         padding: 2vh 5vw;
         max-width: 90vw;
+        line-height: 1.2;
     }
-    
+    .sns {
+    line-height: 0.5;
+    }
     .event-details, .icon-details {
         display: none;
     }
-    .responsive-iframe {
-        width: 90vw;
-        height: 90vw;
+    .heroPc{   
+        display: none;
     }
+    .heroPhone{
+        display: block;
+    }
+
+    .image-placeholder {
+        width: 85vw;
+        max-width: 90vw;
+    }
+
+    .responsive-iframe {
+        width: 85vw;
+        height: 85vw;
+        max-width: 90vw;
+        max-height: 90vw;
+    }
+
 }
