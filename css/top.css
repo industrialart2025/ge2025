@@ -1,0 +1,599 @@
+html{
+    font-size: 16px;
+}
+@media (min-width: 768px) and (max-width: 1440px) {
+    html{
+        font-size: calc(16vw / 14.4);
+    }
+}
+
+/* ===== 全体の基本スタイル ===== */
+body {
+    font-family: sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #000000;
+    color: #ffffff;
+}
+
+
+/* ===== ヘッダーエリア ===== */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: calc(15vw / 14.4) calc(16vw / 14.4);
+    background-color: black;
+    z-index: 100;
+}
+/* 言語切り替え用（英語は最初隠しておく） */
+.lang-en {
+    display: none;
+}
+
+.lang-ja {
+    display: block;
+}
+
+
+.logo {
+    width: calc(50vw / 14.4);
+    height: calc(50vw / 14.4);
+}
+.logo img{
+    width: calc(50vw / 14.4);
+    height: calc(50vw / 14.4);
+}
+
+@media screen and (max-width: 768px) {
+    .header {
+        padding: calc(7vw / 3.9);
+    }
+    .logo,
+    .logo img{
+        width: 50px;
+        height: 50px;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*============
+nav
+=============*/
+nav {
+    display: block;
+    position: fixed;
+    top: 0;
+    right: calc(-318vw / 14.4);
+    bottom: 0;
+    width: 318px;
+    background: #000000;
+    overflow-x: hidden;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    transition: all .5s;
+    z-index: 3;
+    opacity: 0;
+}
+.open nav {
+    right: 0;
+    opacity: 1;
+}
+nav .inner {
+    padding-top: 96px;
+}
+nav .inner ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+nav .inner ul li {
+    position: relative;
+    margin: 0;
+}
+nav .inner ul li a {
+    display: block;
+    color: #ffffff;
+    font-size: 14px;
+    padding-left: 2.6rem;
+    padding-top: 1rem;
+    text-decoration: none;
+    transition-duration: 0.2s;
+}
+nav .inner ul li a:hover {
+    color: #d9d9d9;
+}
+
+/* 言語切り替えのボタン部分 */
+.language-toggle {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    gap: 8px;
+    padding-left: 2.6rem;
+    padding-top: 4.8rem;
+}
+.language-toggle #lang{
+    margin-right: 2rem;
+}
+.lang-btn {
+    padding: 5px 10px;
+    border: 0 solid #ffffff;
+    background: #000000;
+    color: #ffffff;
+    cursor: pointer;
+    font-size: 0.9rem;
+}
+.lang-btn.active {
+    background: #ffffff;
+    color: #000000;
+}
+    
+@media screen and (max-width: 768px) {
+    nav {
+      right: -220px;
+      width: 100vw;
+    }
+    nav .inner ul li a, .language-toggle{
+        padding-left: 6rem;
+    }
+
+}
+
+/*============
+.toggle_btn
+=============*/
+.hamburger{
+    position: relative;
+    width: 30px;
+    height: 30px;
+}
+.hamburger.open .toggle_btn{
+    display: block;
+    position: fixed;
+    z-index: 10;
+    transition: all .5s;
+}
+.toggle_btn {
+    position: absolute;
+    display: flex;
+    width: 30px;
+    height: 30px;
+    transition: all .5s;
+    cursor: pointer;
+    z-index: 4;
+}
+@media screen and (max-width: 768px) {
+    .hamburger{
+        display: block;
+        position: fixed;
+        top: 1.5rem;
+        right: 1.5rem;
+        z-index: 10;
+        }
+    .toggle_btn {
+        position: absolute;
+    }
+}
+
+.toggle_btn span {
+    display: block;
+    position: absolute;
+    left: 4px;
+    width: 22px;
+    height: 1.5px;
+    background-color: #ffffff;
+    border-radius: 4px;
+    transition: all .5s;
+}
+.toggle_btn span:nth-child(1) {
+    top: 6px;
+}
+.toggle_btn span:nth-child(2) {
+    top: 14px;
+}
+.toggle_btn span:nth-child(3) {
+    bottom: 6px;
+}
+.open .toggle_btn span {
+    background-color: #fff;
+}
+.open .toggle_btn span:nth-child(1) {
+    -webkit-transform: translateY(8px) rotate(-45deg);
+    transform: translateY(8px) rotate(-45deg);
+}
+.open .toggle_btn span:nth-child(2) {
+    opacity: 0;
+}
+.open .toggle_btn span:nth-child(3) {
+    -webkit-transform: translateY(-8px) rotate(45deg);
+    transform: translateY(-8px) rotate(45deg);
+}
+
+/*============
+#mask
+=============*/
+#mask {
+    display: none;
+    transition: all 1s;
+}
+.open #mask {
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #000;
+    opacity: 0;
+    z-index: 2;
+    cursor: pointer;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ===== ヒーローセクション（後で画像に置き換える青いとこ） ===== */
+.hero {
+    position: relative;
+    width: 100vw;
+    display: flex;
+    justify-content: center; 
+    overflow: hidden;
+}
+
+.hero video {
+    width: 100%; 
+    height: auto; 
+    display: block; 
+}
+
+.hero img {
+    width: 100%; 
+    height: auto; 
+    display: block; 
+}
+
+
+.hero-txt {
+    position: absolute;
+    margin: 0;
+    height: 100vh;
+    left: calc(120vw / 14.4);
+    top: calc(80vw / 14.4);
+}
+
+/* pc版サイトの時だけ出てくる文字とかアイコン */
+.event-details {
+    position: absolute;
+    right: calc(120vw / 14.4);
+    bottom: calc(80vw / 14.4);
+
+    text-align: right;
+    font-weight: bold;
+    line-height: 0.5;
+}
+.icon-details {
+    position: absolute;
+    left: calc(120vw / 14.4);
+    bottom: calc(80vw / 14.4);
+    max-width: calc(50vw / 14.4);
+}
+
+
+
+/* ラッパ要素でサイズを指定して、2つのvideoを重ねる */
+.video-container {
+    position: relative;
+    width: 100%;  
+    max-width: 100vw; 
+    aspect-ratio: 1440/960; 
+    margin: 0 auto; 
+    background: #000000; 
+    overflow: hidden;  
+    z-index: -1;
+}
+
+/* 2つの動画を重ねる */
+.video-layer {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    margin: auto;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; 
+    opacity: 0;        
+    transition: opacity 2s ease; 
+}
+
+/* 表示される（フェードインする）動画には後からJSで opacity:1 を付ける */
+.video-layer.active {
+    opacity: 1;
+}
+
+@media screen and (max-width: 768px) {
+    .hero {
+        height: 100vw;
+    }
+    .video-container{
+        transform: rotate(90deg);
+        top: 0;
+        transform-origin: center center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        scale: 1.5;
+    }
+}
+
+
+
+
+
+
+
+
+
+.text-container {
+    position: relative;
+    z-index: 1;
+    text-align: left;
+    max-width: 100%;
+    padding-left: 5vw;
+}
+
+h1 {
+    margin: 0;
+    line-height: 1.5;
+    font-size: 1.6rem;
+    text-align: left;
+    white-space: nowrap; /* 改行を禁止 */
+    font-family: dnp-shuei-gothic-gin-std, sans-serif;
+}
+
+h2 {
+    margin: 0;
+    line-height: 1.5;
+    font-size: 1.2rem;
+    text-align: left;
+    white-space: nowrap; /* 改行を禁止 */
+    font-family: dnp-shuei-gothic-gin-std, sans-serif;
+}
+
+/* ちっさい文字*/
+.small-text {
+    font-size: 1rem;
+}
+.small-small-text {
+    font-size: 0.6rem;
+}
+/* 全体のテキストのサイズを大きく */
+.event-details p {
+    font-size: 1.5rem; /* 通常のテキストを大きく */
+}
+
+p{
+    font-size: 0.9rem;
+    font-family: dnp-shuei-gothic-gin-std, sans-serif;
+}
+
+
+
+
+
+
+
+
+/* ===== Web展示の画像エリア（仮の画像ボックス） ===== */
+.image-placeholder {
+    width: 25vw;
+    aspect-ratio: 16 / 9; /* 16:9の比率を維持 */
+    max-width: 30vw;
+    background-color: grey;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1rem;
+    text-align: center;
+    margin: 2vh auto;
+    padding: 2vh;
+}
+
+
+/* ===== コンテンツエリア（説明文とかが入る） ===== */
+.content-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    max-width: 90vw;
+    margin: auto;
+    padding-top: 7vh; /* さらに上に配置調整 */
+}
+
+
+/* 文章用のブロック（説明テキストのエリア） */
+.text-section {
+    padding: 4vh 2vw;
+    max-width: 30vw;
+}
+
+
+/* pc版で説明んとこを三つ並べるためのやつ */
+.description, .web-exhibition, .information {
+    flex: 1;
+    padding: 4vh 2vw;
+    max-width: 28vw;
+    line-height: 1.5;
+}
+
+
+/* 行間開け */
+.expanded-line {
+    line-height: 2.5;
+}
+
+.sns {
+    max-width: 90vw;
+    margin: auto;
+    padding: 2vh 5vw;
+    line-height: 1;
+}
+
+
+
+/* ======== 一番下のとこ(今考えたらフッターでつくりゃよかった) ======== */
+.tyosakukenn {
+    max-width: 90vw;
+    margin: auto;
+    padding: 1vh 5vw;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    line-height: 1;
+    padding-top: 20vh;
+}
+ /* リンクの色を白に設定 */
+ .privacy-link {
+    color: white;
+}
+
+
+
+
+/* ボタンのスタイル */
+.button-custom {
+    background-color: black;
+    color: white;
+    border: 2px solid white;
+    padding: 1.2vh 2.5vw;
+    font-size: 1rem;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    margin: 2vh auto;
+    cursor: pointer;
+    width: fit-content;
+}
+
+.button-custom:hover {
+    background-color: white;
+    color: black;
+}
+
+
+
+
+
+
+
+/* iframe(地図) レスポンシブ対応 */
+.responsive-iframe {
+    width: 30vw; 
+    height: 30vw; 
+    max-width: 35vw;
+    max-height: 35vw;
+    border: none;
+    display: block;
+    margin-left: 0;
+}
+
+.heroPc{display: block;}
+.heroPhone{display: none;}
+
+/* スマホ用 */
+@media screen and (max-width: 768px) {
+    h1 {
+        font-size: 0.9rem;
+    }
+    h2 {
+        font-size: 0.8rem;
+    }
+    .header {
+        flex-direction: row;
+    }
+    .text-container {
+        max-width: 100%;
+        text-align: left;
+        padding-left: 5vw;
+    }
+    .content-container {
+        flex-direction: column;
+        align-items: center;
+        max-width: 90vw;
+    }
+    .map{
+        width:100%;
+    }
+    .description, .web-exhibition, .information{
+        padding: 2vh 5vw;
+        max-width: 90vw;
+        line-height: 1.2;
+    }
+    .sns {
+        line-height: 0.5;
+    }
+    .event-details, .icon-details {
+        display: none;
+    }
+    .heroPc{   
+        display: none;
+    }
+    .heroPhone{
+        display: block;
+    }
+
+    .image-placeholder {
+        width: 85vw;
+        max-width: 90vw;
+    }
+
+    .responsive-iframe {
+        width: 85vw;
+        height: 85vw;
+        max-width: 90vw;
+        max-height: 90vw;
+    }
+
+}
+
+
+.hihyousji{
+    display: none;
+}
