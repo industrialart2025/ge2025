@@ -336,7 +336,7 @@ nav .inner ul li a:hover {
     height: 100%;
     object-fit: cover; 
     opacity: 0;        
-    transition: opacity 2s ease; 
+    transition: opacity 3s ease; 
 }
 
 /* 表示される（フェードインする）動画には後からJSで opacity:1 を付ける */
