@@ -356,7 +356,14 @@
           const hmb   = document.querySelector('.hamburger');
           const mask  = document.getElementById('mask');
           const open  = 'open';
-      
+          const menuLinks = document.querySelectorAll('#navArea nav ul li a');
+          
+          // スマホ画面かチェックするための関数
+          function isMobile() {
+            return window.innerWidth <= 768;
+          }
+          
+          // ハンバーガーメニューボタンのオンオフによる開閉
           // menu open/close
           btn.addEventListener('click', function() {
             if (!nav.classList.contains(open)) {
@@ -367,12 +374,23 @@
               hmb.classList.remove(open);
             }
           });
-      
+          
           // mask close
           mask.addEventListener('click', function() {
             nav.classList.remove(open);
             hmb.classList.remove(open);
           });
+
+          // スマホ画面の場合のみ、ハンバーガーメニュー内のリンクをタップしたとき閉じる
+          menuLinks.forEach(link => {
+            link.addEventListener('click', function() {
+              if (isMobile()) {
+                nav.classList.remove(open);
+                hmb.classList.remove(open);
+              }
+            });
+          });
+
         });
       
       
