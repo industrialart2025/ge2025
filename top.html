@@ -44,7 +44,7 @@
     <meta name="theme-color" content="#000000">
 
     <!-- fonts 後にIAアカウントver.に変更　-->
-    <script> 
+    <script>
         (function(d) {
           var config = {
             kitId: 'wlf7jxw',
@@ -54,10 +54,12 @@
           h=d.documentElement,t=setTimeout(function(){h.className=h.className.replace(/\bwf-loading\b/g,"")+" wf-inactive";},config.scriptTimeout),tk=d.createElement("script"),f=false,s=d.getElementsByTagName("script")[0],a;h.className+=" wf-loading";tk.src='https://use.typekit.net/'+config.kitId+'.js';tk.async=true;tk.onload=tk.onreadystatechange=function(){a=this.readyState;if(f||a&&a!="complete"&&a!="loaded")return;f=true;clearTimeout(t);try{Typekit.load(config)}catch(e){}};s.parentNode.insertBefore(tk,s)
         })(document);
     </script>
-    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&family=Roboto:ital,wdth,wght@0,75..100,500;1,75..100,500&display=swap" rel="stylesheet">
 
     <!-- css -->
-    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/destyle.css@1.0.15/destyle.css"> reset css -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/destyle.css@1.0.15/destyle.css"> <!--reset css -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css"> <!-- swiper css -->
 
     <link rel="stylesheet" href="/css/top.css">
@@ -146,15 +148,19 @@
                 </div>
                 <!-- 英語 -->
                 <div class="lang-en">
-                <h1>Tokyo Metropolitan University<br>
-                    Faculty of System Design<br>
-                    Department of Industrial Art</h1>
-                <br>
-                <br>
-                <br>
-                <h2>Faculty of System Design<br>Industrial Art Course<br><br>
-                    Exhibition of Undergraduate<br>and Graduate Student Works 2025
-                </h2>  
+                    <h1>Tokyo Metropolitan University<br>
+                        Faculty of System Design<br>
+                        Department of Industrial Art
+                        <br><br>
+                        Exhibition of Undergraduate and<br>
+                        Graduate Student Works 2025
+                    </h1>
+                    <br>
+                    <br>
+                    <br>
+                    <!-- <h2>Faculty of System Design<br>Industrial Art Course<br><br>
+                        Exhibition of Undergraduate<br>and Graduate Student Works 2025
+                    </h2>   -->
                 </div>
             </div> 
         </div>
@@ -185,75 +191,95 @@
           <section class="description" id="concept">
             <!-- 日本語 -->
             <div class="lang-ja">
-              <p class="small-text">Concept</p>
-              <p class="expanded-line">問いがあるから、答えを考える。</p>
-              <p class="expanded-line">答えがないなら、もがきつづける。</p>
-              <p class="expanded-line">もがいたすえに、アイデアが生まれる。</p>
-              <p class="expanded-line">そのアイデアを形にしようとしたとき、<br>ふたたび問いが生まれる。</p>
-              <p class="expanded-line">そうして過ごした年月が、<br>熟成され、やがて光を放つとき。</p>
-              <p class="expanded-line">発光する瞬間。</p>
+                <p class="small-text">Concept</p>
+                <p class="expanded-line">問いがあるから、答えを考える。</p>
+                <p class="expanded-line">答えがないなら、もがきつづける。</p>
+                <p class="expanded-line">もがいたすえに、アイデアが生まれる。</p>
+                <p class="expanded-line">そのアイデアを形にしようとしたとき、<br>ふたたび問いが生まれる。</p>
+                <p class="expanded-line">そうして過ごした年月が、<br>熟成され、やがて光を放つとき。</p><br>
+                <p class="expanded-line">ハッコウする瞬間。</p><br>
+                <!-- <p class="expanded-line">
+                    東京都立大学<br>
+                    システムデザイン学部・研究科<br>
+                    インダストリアルアート学科・学域<br>
+                    卒業・修了制作展　2025
+                </p> -->
             </div>
+
             <!-- 英語 -->
             <div class="lang-en">
-              <p class="small-text">Concept</p>
-              <p class="expanded-line">A question arises, and so we seek an answer.</p>
-              <p class="expanded-line">If no answer comes, we struggle on.</p>
-              <p class="expanded-line">Through the struggle, an idea is born.</p>
-              <p class="expanded-line">And the moment we try to shape it, a new question arises.</p>
-              <p class="expanded-line">The years spent in this cycle, maturing, deepening—until one day, they shine.</p>
-              <p class="expanded-line">The moment of HAKKOU.</p>
+                <p class="small-text">Concept</p>
+                <p class="expanded-line">A question arises, and so we seek an answer.</p>
+                <p class="expanded-line">If no answer comes, we struggle on.</p>
+                <p class="expanded-line">Through the struggle, an idea is born.</p>
+                <p class="expanded-line">And the moment we try to shape it, a new question arises.</p>
+                <p class="expanded-line">The years spent in this cycle, maturing, deepening—until one day, they shine.</p><br>
+                <p class="expanded-line">The moment of HAKKOU.</p><br>
+                <!-- <p class="expanded-line">
+                    Faculty of System Design<br>
+                    Industrial Art Course<br>
+                    Exhibition of Undergraduate and<br>
+                    Graduate Student Works 2025
+                </p> -->
             </div>
           </section>
       
           <!-- Web Exhibitionセクション -->
-          <section class="hihyouji web-exhibition" id="web-exhibition">
+          <section class="web-exhibition" id="web-exhibition">
             <!-- 日本語 -->
             <div class="lang-ja">
               <p class="small-text">Web Exhibition</p>
-              <div class="image-placeholder">研究画像のスライドショー（1920×1080）</div>
-              <button class="button-custom">制作/研究一覧を見る</button>
+              <div class="image-placeholder hihyouji">研究画像のスライドショー（1920×1080）</div>
+              <button class="button-custom hihyouji">制作/研究一覧を見る</button>
               <p class="small-small-text">会場に足を運べない方々にも制作や研究をご覧いただけるよう、Web展として研究や作品の概要を掲載予定です。</p>
             </div>
             <!-- 英語 -->
             <div class="lang-en">
               <p class="small-text">Web Exhibition</p>
-              <div class="image-placeholder">Research image slideshow (1920×1080)</div>
-              <button class="button-custom">View List of Works/Research</button>
+              <div class="image-placeholder hihyouji">Research image slideshow (1920×1080)</div>
+              <button class="button-custom hihyouji">View List of Works/Research</button>
               <p class="small-small-text">To allow those who cannot visit the exhibition to see the production and research, we plan to post an overview of the research and works as a web exhibition.</p>
             </div>
           </section>
       
           <!-- Informationセクション -->
           <section class="information" id="information">
+            <div class="small-text">Information</div>
+            <div class="info-image">
+                <img src="/images/ogp/indiploma.jpg" alt="Information image">
+            </div>
             <!-- 日本語 -->
             <div class="lang-ja">
-              <p class="small-text">Information</p>
-              <p>東京都立大学 インダストリアルアート学科・学域</p>
-              <p>卒業・修了作品展 2025</p>
-              <p>会期: 2025.3.1.Sat - 3.7.Fri (3.3.Monは休館日)</p>
-              <p>時間: 9:30-17:30 (最終入場17:00)*</p>
-              <p>会場: 東京都美術館 ギャラリーA・B*</p>
-              <p>アクセス: JR上野駅「公園口」より徒歩7分</p>
-              <p>東京メトロ銀座線・日比谷線上野駅「7番出口」より徒歩10分</p>
-              <p>京成電鉄京成上野駅より徒歩10分</p>
-              <br>
-              <p>*最終日3.7.Friのみ9:30-12:00(最終入場11:30)</p>
-              <p>*入場無料・予約不要</p>
+                <p>東京都立大学</p><p>インダストリアルアート学科・学域</p>
+                <p>卒業・修了作品展 2025</p><br>
+                <p>会期&emsp;2025.3.1.Sat - 3.7.Fri&emsp;(3.3.Monは休館日)</p>
+                <p>時間&emsp;9:30-17:30&emsp;(最終入場17:00)&nbsp;*</p>
+                <p>会場&emsp;東京都美術館 ギャラリーA・B&nbsp;*</p>
+                <p>アクセス&emsp;JR上野駅「公園口」より徒歩7分</p>
+                <p>&emsp;&emsp;&emsp;&emsp;&emsp;東京メトロ銀座線・日比谷線上野駅</p>
+                <p>&emsp;&emsp;&emsp;&emsp;&emsp;「7番出口」より徒歩10分</p>
+                <p>&emsp;&emsp;&emsp;&emsp;&emsp;京成電鉄京成上野駅より徒歩10分</p>
+                <br>
+                <p>*&nbsp;最終日3.7.Friのみ9:30-12:00&emsp;(最終入場11:30)</p>
+                <p>*&nbsp;入場無料・予約不要</p>
             </div>
             <!-- 英語 -->
             <div class="lang-en">
-              <p class="small-text">Information</p>
-              <p>Department of Industrial Art, Tokyo Metropolitan University</p>
-              <p>Showcase of Graduate and Undergraduate Student Works 2025</p>
-              <p>Duration: 2025.3.1.Sat - 3.7.Fri (3.3. (Mon) is a closed day.)</p>
-              <p>Hours: 9:30-17:30 (last entry at 5 pm)*</p>
-              <p>Venue: Tokyo Metropolitan Art Museum Gallery A & B*</p>
-              <p>Access: 7 min walking from JR Ueno Station “Park Gate”.</p>
-              <p>10 min walking from Ueno Station “Exit 7”, Tokyo Metro Ginza Line, Hibiya Line.</p>
-              <p>10 min walking from Keisei Line Keisei Ueno Station.</p>
-              <br>
-              <p>*Mar. 7, 9:30 am - 12 pm (last entry at 11:30 am)</p>
-              <p>*Free Admission ・ No Reservation Required</p>
+                <p>Tokyo Metropolitan University Faculty of Systems Design Department of Industrial Art Showcase of Graduate and Undergraduate Student Works 2025</p>
+                <p>period&emsp;2025.3.1.Sat - 3.7.Fri<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&emsp;&emsp;&emsp;3.3. (Mon) is a closed day.</p>
+                <p>Hours&emsp;9:30-17:30 (last entry at 5 pm)&nbsp;*</p>
+                <p>Venue&emsp;Tokyo Metropolitan Art Museum<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&emsp;&emsp;&emsp;Gallery A & B&nbsp;*</p>
+                <p>Access&emsp;7 min walking from JR Ueno Station<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&emsp;&emsp;&emsp;“Park Gate”.</p>
+                <p>&nbsp;&nbsp;&nbsp;&nbsp;&emsp;&emsp;&emsp;10 min walking from Ueno Station “Exit 7”,<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&emsp;&emsp;&emsp;Tokyo Metro Ginza Line, Hibiya Line.</p>
+                <p>&nbsp;&nbsp;&nbsp;&nbsp;&emsp;&emsp;&emsp;10 min walking from Keisei Line Keisei<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&emsp;&emsp;&emsp;Ueno Station.</p>
+                <br>
+                <p>*&nbsp;Mar. 7, 9:30 am - 12 pm (last entry at 11:30 am)</p>
+                <p>*&nbsp;Free Admission ・ No Reservation Required</p>
             </div>
       
             <!-- 地図セクション (情報セクション内にネスト) -->
@@ -266,7 +292,7 @@
                   allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
                 </iframe>
                 <p class="small-small-text">本展示について東京都美術館にお問い合わせすることはご遠慮ください。</p>
-                <p class="small-small-text">ご来場の際は，東京都美術館の感染症予防対策にご協力ください。</p>
+                <p class="small-small-text">ご来場の際は，<a href="https://www.tobikan.jp/information/20230508_1.html" target="_blank">東京都美術館の感染症予防対策</a>にご協力ください。</p>
               </div>
               <!-- 英語 -->
               <div class="lang-en">
@@ -276,7 +302,7 @@
                   allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
                 </iframe>
                 <p class="small-small-text">Please refrain from contacting the Tokyo Metropolitan Art Museum regarding this exhibition.</p>
-                <p class="small-small-text">Please cooperate with the Tokyo Metropolitan Art Museum's infectious disease prevention measures.</p>
+                <p class="small-small-text">Please cooperate with the <a href="https://www.tobikan.jp/information/20230508_1.html" target="_blank">Tokyo Metropolitan Art Museum's infectious disease prevention measures</a></p>
               </div>
             </section>
           </section>
@@ -286,23 +312,23 @@
         <!-- SNSセクション -->
         <section class="sns" id="sns">
           <!-- 日本語 -->
-          <div class="lang-ja">
+          <div class="lang-ja sns-in">
             <p class="small-text">SNS</p>
             <p>　</p>
             <p>SNSで情報発信しています</p>
             <p>最新情報はこちらからご確認ください。</p>
             <p>　</p>
-            <p>@tmu_ia_sotsuten</p>
+            <p><a href="https://www.instagram.com/tmu_ia_sotsuten/" target="_blank">@tmu_ia_sotsuten</a></p>
             <p>　</p>
           </div>
           <!-- 英語 -->
-          <div class="lang-en">
+          <div class="lang-en sns-in">
             <p class="small-text">Social Media</p>
             <p>　</p>
             <p>We are sharing information on social media.</p>
             <p>Please check here for the latest information.</p>
             <p>　</p>
-            <p>@tmu_ia_sotsuten</p>
+            <p><a href="https://www.instagram.com/tmu_ia_sotsuten/" target="_blank">@tmu_ia_sotsuten</a></p>
             <p>　</p>
           </div>
         </section>
@@ -311,8 +337,8 @@
 
    
     <div class="tyosakukenn">
-        <p>© 2025 Department of Industrial Art, Tokyo Metropolitan University</p>
-        <p><a href="https://industrial-art.sd.tmu.ac.jp/privacy-policy.html" target="_blank" rel="noopener noreferrer" class="privacy-link">Privacy Policy</a></p>
+        <p>© 2025 Department of Industrial Art, Tokyo Metropolitan University<br>
+        <a href="https://industrial-art.sd.tmu.ac.jp/privacy-policy.html" target="_blank" rel="noopener noreferrer" class="privacy-link">Privacy Policy</a></p>
     </div>
     
 
@@ -418,10 +444,6 @@
 
 
      
-
-
-
-
 
 
         const videoPaths = [
