@@ -164,32 +164,51 @@ function selectChangeEither() {
     updateSecondaryButtons();
 }
 
-//スタジオ及び、ジャンルの各値を選択するボタンを作成する関数
 function selectChangeDetail(selectList) {
     const container = document.querySelector('.button-container-secondary');
-   
-    container.innerHTML = ''; // 前のボタンをクリア   
+    container.innerHTML = ''; // 前のボタンをクリア
 
-    // すべて表示ボタンを追加
+    let groupSize = selectedKey === "genre" ? 9 : 5; // ジャンルは9つずつ、スタジオは5つずつ
+    let groupDiv = document.createElement("div");
+    const groupPrefix = selectedKey === "genre" ? "genre" : "studio"; // "genre" または "studio" に基づく接頭辞
+    groupDiv.classList.add("button-group", `${groupPrefix}-group-1`); // 最初のグループに接頭辞と番号を追加
+    container.appendChild(groupDiv);
+
+    let count = 0; // グループ内の要素数カウント
+    let groupCount = 1; // グループ番号をカウント
+
+    // すべて表示ボタンを追加（最初のグループに入れる）
     const allButton = document.createElement("button");
     allButton.textContent = "すべて表示";
     allButton.addEventListener("click", () => {
         currentFilter = null;
         updateArticleList();
     });
-    container.appendChild(allButton);
+    groupDiv.appendChild(allButton);
+    count++;
 
-    // フィルター用ボタンを追加
-    selectList.map(value => {
+    selectList.forEach((value, index) => {
+        // 指定した個数ごとに新しい div を作成
+        if (count % groupSize === 0) {
+            groupDiv = document.createElement("div");
+            groupDiv.classList.add("button-group", `${groupPrefix}-group-${++groupCount}`); // ジャンルとスタジオで異なるグループ名
+            container.appendChild(groupDiv);
+            count = 0;
+        }
+
         const button = document.createElement("button");
         button.textContent = value;
         button.addEventListener("click", () => {
             currentFilter = value;
             updateArticleList();
         });
-        container.appendChild(button);
+        groupDiv.appendChild(button);
+        count++;
     });
 }
+
+
+
 
 // 重複を削除する関数（ジャンルが配列の場合も対応）
 function listSet(json, key) {

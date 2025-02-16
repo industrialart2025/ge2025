@@ -1,40 +1,50 @@
+html{
+    font-size: 16px;
+}
+
 body {
     font-family: sans-serif;
     margin: 0;
     padding: 0;
     background-color: #000000;
     color: #ffffff;
+    width:90%;
     max-width: 1158px; /* 必要に応じて最大幅を設定 */
     margin: 0 auto; /* 親要素を中央に揃える */
 }
 
-.ex-list {
-    margin-bottom: 8px; /* 親要素を中央に揃える */
+h1 {
+    margin: 0;
+    line-height: 1.5;
     font-size: 40px;
+    text-align: left;
+    white-space: nowrap; /* 改行を禁止 */
+    font-family: dnp-shuei-gothic-gin-std, sans-serif;
+    margin-bottom: 16px; /* 親要素を中央に揃える */
 }
 
 .caution {
-    margin-bottom: 120px; /* 親要素を中央に揃える */
+    font-size: 12px;
+    margin-bottom: calc(120vw/1440*100); /* 親要素を中央に揃える */
 }
 
 /* 「ジャンル・スタジオ」ボタンのスタイル */
 .button-container {
     display: flex;
-    margin-bottom: 40px;
+    margin-bottom: calc(40vw/1440*100); /* 親要素を中央に揃える */
 }
 .genre-button,
 .studio-button  {
     background-color: black;
     color: white;
     border: 1px solid white;
-    padding: 8px 20px;
+    padding: 8px 30px;
     font-size: 16px;
     text-align: center;
     display: flex;
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    width: 124px;
 }
 .genre-button {
     border-radius: 8px 0 0 8px; /* 左上・左下のみ丸み */
@@ -59,8 +69,8 @@ body {
     background-color: black;
     color: white;
     border: 1px solid white;
-    padding: 12px 30px;
-    font-size: 12px;
+    padding: calc(12vw/1440*100) calc(24vw/1440*100);
+    font-size: calc(12vw/1440*100);
     text-align: center;
     display: flex;
     align-items: center;
@@ -72,8 +82,53 @@ body {
     background-color: #e0e0e0;
 }
 
+.button-group {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.genre-group-1 button:first-child {
+    border-top-left-radius: 10px; /* 左上の角を丸くする */
+}
+.genre-group-1 button:last-child {
+    border-top-right-radius: 10px; /* 右上の角を丸くする */
+}
+.genre-group-2 button:last-child {
+    border-top-right-radius: 10px; /* 左上の角を丸くする */
+    border-bottom-right-radius: 10px; /* 右上の角を丸くする */
+}
+.genre-group-3 button:last-child {
+    border-bottom-right-radius: 10px; /* 右上の角を丸くする */
+}
+.genre-group-4 button:first-child {
+    border-bottom-left-radius: 10px; /* 左上の角を丸くする */
+}
+.genre-group-4 button:last-child {
+    border-bottom-right-radius: 10px; /* 右上の角を丸くする */
+}
+
+.studio-group-1 button:first-child {
+    border-top-left-radius: 10px; /* 左上の角を丸くする */
+}
+.studio-group-1 button:last-child {
+    border-top-right-radius: 10px; /* 右上の角を丸くする */
+    border-bottom-right-radius: 10px; /* 左上の角を丸くする */
+}
+.studio-group-2 button:last-child {
+    border-top-right-radius: 10px; /* 左上の角を丸くする */
+    border-bottom-right-radius: 10px; /* 右上の角を丸くする */
+}
+.studio-group-3 button:first-child {
+    border-bottom-left-radius: 10px; /* 右上の角を丸くする */
+}
+.studio-group-3 button:last-child {
+    border-bottom-right-radius: 10px; /* 右上の角を丸くする */
+}
+
 /* 検索件数のスタイル */
 .search {
+    font-size: 12px;
+    margin: 0 auto;
     margin-bottom: 40px;
 }
 
@@ -81,8 +136,9 @@ body {
     display: flex;
     flex-wrap: wrap; /* 折り返し可能に */
     gap: 40px; /* カード間の余白 */
-    justify-content: flex-start; /* 左寄せ */
+    justify-content: flex-start;
     margin: 0 auto; /* 親要素を中央に揃える */
+    width:100%;
     max-width: 1158px; /* 必要に応じて最大幅を設定 */
     color: #000000;
 }
@@ -183,4 +239,102 @@ body {
 /* 展示番号のスタイル */
 .exnum{
     font-size: 16px;
+}
+
+/* ほんの少し小さなPC用 */
+@media screen and (max-width: 1290px) {
+    .search, .contents {
+        max-width:750px;
+    }
+}
+
+@media screen and (max-width: 850px) {
+    .search, .contents {
+        max-width:355px;
+    }
+}
+
+/* スマホ用 */
+@media screen and (max-width: 768px) {
+    h1 {
+        font-size: 16px;
+    }
+    .caution {
+        font-size: 8px;
+    }
+    .button-container {
+        margin-bottom: 16px; /* 親要素を中央に揃える */
+    }
+    .genre-button,
+    .studio-button  {
+        font-size: 12px;
+        padding: 8px 20px;
+    }
+    /* たくさんの「ジャンル・スタジオ」ボタンを横一列にしてスクロール */
+    .button-container-secondary {
+        flex-wrap: nowrap; /* 折り返しなし */
+        overflow-x: auto; /* 横スクロールを許可 */
+        white-space: nowrap; /* 折り返さない */
+        padding-bottom: 10px; /* スクロールバーの余白 */
+        scrollbar-width: thin; /* Firefox用 */
+        -ms-overflow-style: none; /* IE/Edge用 */
+    }
+    /* Webkit系ブラウザのスクロールバーを非表示に */
+    .button-container-secondary::-webkit-scrollbar {
+        display: none;
+    }
+    .button-group {
+        flex: 0 0 auto; /* グループを横並びにする */
+        display: flex;
+        flex-wrap: nowrap; /* ボタンを1行に並べる */
+    }
+    .button-container-secondary button {
+        flex: 0 0 auto; /* ボタンの幅を自動調整 */
+        font-size: 10px;
+        padding: 8px 20px;
+    }
+    .search {
+        font-size: 8px;
+    }
+    .genre-group-1 button:first-child {
+        border-top-left-radius: 10px; /* 左上の角を丸くする */
+        border-bottom-left-radius: 10px; /* 左上の角を丸くする */
+    }
+    .genre-group-1 button:last-child {
+        border-top-right-radius: 0px; /* 右上の角を丸くする */
+    }
+    .genre-group-2 button:last-child {
+        border-top-right-radius: 0px; /* 左上の角を丸くする */
+        border-bottom-right-radius: 0px; /* 右上の角を丸くする */
+    }
+    .genre-group-3 button:last-child {
+        border-bottom-right-radius: 0px; /* 右上の角を丸くする */
+    }
+    .genre-group-4 button:first-child {
+        border-bottom-left-radius: 0px; /* 左上の角を丸くする */
+    }
+    .genre-group-4 button:last-child {
+        border-top-right-radius: 10px; /* 右上の角を丸くする */
+        border-bottom-right-radius: 10px; /* 右上の角を丸くする */
+    }
+    
+    .studio-group-1 button:first-child {
+        border-top-left-radius: 10px; /* 左上の角を丸くする */
+        border-bottom-left-radius: 10px; /* 左上の角を丸くする */
+    }
+    .studio-group-1 button:last-child {
+        border-top-right-radius: 0px; /* 右上の角を丸くする */
+        border-bottom-right-radius: 0px; /* 左上の角を丸くする */
+    }
+    .studio-group-2 button:last-child {
+        border-top-right-radius: 0px; /* 左上の角を丸くする */
+        border-bottom-right-radius: 0px; /* 右上の角を丸くする */
+    }
+    .studio-group-3 button:first-child {
+        border-bottom-left-radius: 0px; /* 右上の角を丸くする */
+    }
+    .studio-group-3 button:last-child {
+        border-top-right-radius: 10px; /* 右上の角を丸くする */
+        border-bottom-right-radius: 10px; /* 右上の角を丸くする */
+    }
 }
