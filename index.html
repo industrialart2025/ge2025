@@ -347,190 +347,176 @@
     
     
     <script>
+        /* ================================
+         * 1) #navArea のメニュー開閉
+         * ================================ */
         document.addEventListener('DOMContentLoaded', function() {
-        const nav   = document.getElementById('navArea');
-        const btn   = document.querySelector('.toggle_btn');
-        const hmb   = document.querySelector('.hamburger');
-        const mask  = document.getElementById('mask');
-        const open  = 'open';
-
-        // menu open/close
-        btn.addEventListener('click', function() {
+          const nav   = document.getElementById('navArea');
+          const btn   = document.querySelector('.toggle_btn');
+          const hmb   = document.querySelector('.hamburger');
+          const mask  = document.getElementById('mask');
+          const open  = 'open';
+      
+          // menu open/close
+          btn.addEventListener('click', function() {
             if (!nav.classList.contains(open)) {
-            nav.classList.add(open);
-            hmb.classList.add(open);
+              nav.classList.add(open);
+              hmb.classList.add(open);
             } else {
-            nav.classList.remove(open);
-            hmb.classList.remove(open);
+              nav.classList.remove(open);
+              hmb.classList.remove(open);
             }
-        });
-
-        // mask close
-        mask.addEventListener('click', function() {
+          });
+      
+          // mask close
+          mask.addEventListener('click', function() {
             nav.classList.remove(open);
             hmb.classList.remove(open);
+          });
         });
-        });
-
-
-
+      
+      
+        /* ================================
+         * 2) 言語切り替え (初期判定 + ボタン)
+         * ================================ */
         document.addEventListener("DOMContentLoaded", function () {
-        // ---------------------------
-        // 1. 初期表示時の言語切り替え（自動判定）
-        // ---------------------------
-        // ※自動判定を残す場合。不要なら削除してもOKです。
-        let userLang = navigator.language || navigator.userLanguage;
-        // 「ja」スタートなら日本語、それ以外は英語表示にする例
-        if (userLang.startsWith("ja")) {
+          // ---- 1. 初期表示時の言語切り替え（自動判定） ----
+          let userLang = navigator.language || navigator.userLanguage;
+          if (userLang.startsWith("ja")) {
             showJapanese();
-        } else {
+          } else {
             showEnglish();
-        }
-
-        // ---------------------------
-        // 2. ハンバーガーメニュー開閉
-        // ---------------------------
-        const menuToggle = document.querySelector(".menu-toggle");
-        const menuList   = document.querySelector(".menu-list");
-
-        menuToggle.addEventListener("click", function() {
-            menuList.classList.toggle("open"); // openクラスのON/OFF切り替え
-        });
-
-        // ---------------------------
-        // 3. 言語切り替えボタン（JP / EN）
-        // ---------------------------
-        const langBtns = document.querySelectorAll(".lang-btn");
-
-        langBtns.forEach((btn) => {
+          }
+      
+          // ---- 2. ハンバーガーメニュー開閉 (コメントアウト) ----
+          // const menuToggle = document.querySelector(".menu-toggle");
+          // const menuList   = document.querySelector(".menu-list");
+          // menuToggle.addEventListener("click", function() {
+          //   menuList.classList.toggle("open");
+          // });
+      
+          // ---- 3. 言語切り替えボタン（JP / EN） ----
+          const langBtns = document.querySelectorAll(".lang-btn");
+          langBtns.forEach((btn) => {
             btn.addEventListener("click", () => {
-            const selectedLang = btn.getAttribute("data-lang");
-            if (selectedLang === "ja") {
+              const selectedLang = btn.getAttribute("data-lang");
+              if (selectedLang === "ja") {
                 showJapanese();
-            } else {
+              } else {
                 showEnglish();
-            }
-            // ボタンの見た目更新用
-            setActiveButton(selectedLang);
+              }
+              // ボタンの見た目更新用
+              setActiveButton(selectedLang);
             });
-        });
-
-        // ---------------------------
-        // 4. 言語表示切り替え 関数
-        // ---------------------------
-        function showJapanese() {
+          });
+      
+          // ---- 4. 言語表示切り替え 関数 ----
+          function showJapanese() {
             document.querySelectorAll(".lang-ja").forEach(el => el.style.display = "block");
             document.querySelectorAll(".lang-en").forEach(el => el.style.display = "none");
-        }
-        function showEnglish() {
+          }
+          function showEnglish() {
             document.querySelectorAll(".lang-ja").forEach(el => el.style.display = "none");
             document.querySelectorAll(".lang-en").forEach(el => el.style.display = "block");
-        }
-
-        // ---------------------------
-        // 5. アクティブボタンの見た目変更
-        // ---------------------------
-        function setActiveButton(lang) {
+          }
+      
+          // ---- 5. アクティブボタンの見た目変更 ----
+          function setActiveButton(lang) {
             langBtns.forEach((btn) => {
-            btn.classList.remove("active");
+              btn.classList.remove("active");
             });
-            // data-langが一致するボタンだけactiveを付与
             const currentBtn = document.querySelector(`.lang-btn[data-lang="${lang}"]`);
             if (currentBtn) {
-            currentBtn.classList.add("active");
+              currentBtn.classList.add("active");
             }
-        }
+          }
         });
-
-
-     
-
-
+      
+      
+        /* ================================
+         * 3) 動画のランダム再生 & クロスフェード
+         * ================================ */
         const videoPaths = [
-        "images/OK.mp4",
-        "images/RZ.mp4",
-        "images/TS.mp4"
+          "images/OK.mp4",
+          "images/RZ.mp4",
+          "images/TS.mp4"
         ];
-
+      
         // クロスフェードの長さ（秒）
         const CROSSFADE_DURATION = 2;
-
+      
         // ② HTML上のvideo要素を取得
         const videoA = document.getElementById("videoA");
         const videoB = document.getElementById("videoB");
-
+      
         // 「今再生中のvideo」と「次に再生するvideo」を管理するためのフラグ
-        let activeVideo = videoA;   
+        let activeVideo = videoA;
         let inactiveVideo = videoB;
-
+      
         // ③ ページ読み込み時に初期再生開始
         window.addEventListener("DOMContentLoaded", () => {
-        // 最初の動画をランダムに選んで再生
-        const firstPath = pickRandomPath();
-        loadAndPlayVideo(activeVideo, firstPath);
-        // active側だけ最初は表示
-        activeVideo.classList.add("active");
-
-        // イベントリスナー：activeVideoが再生しきったら次へ
-        activeVideo.addEventListener("ended", onVideoEnded);
-        // もう片方も同様に（2つ目の動画が終わったらまた次）
-        inactiveVideo.addEventListener("ended", onVideoEnded);
+          // 最初の動画をランダムに選んで再生
+          const firstPath = pickRandomPath();
+          loadAndPlayVideo(activeVideo, firstPath);
+      
+          // active側だけ最初は表示
+          activeVideo.classList.add("active");
+      
+          // イベントリスナー：activeVideoが再生しきったら次へ
+          activeVideo.addEventListener("ended", onVideoEnded);
+          // もう片方も同様に（2つ目の動画が終わったらまた次）
+          inactiveVideo.addEventListener("ended", onVideoEnded);
         });
-
+      
         // ④ 動画が終わったときに呼ばれるコールバック
         function onVideoEnded() {
-        // まだ再生中なら一旦止める
-        inactiveVideo.pause();
-
-        // 次の動画をランダムに選んで読み込む（同じ動画でもOKならそのまま）
-        const newPath = pickRandomPath();
-        loadAndPlayVideo(inactiveVideo, newPath);
-
-        // クロスフェード開始
-        crossFade();
+          // まだ再生中なら一旦止める
+          inactiveVideo.pause();
+      
+          // 次の動画をランダムに選んで読み込む（同じ動画でもOKならそのまま）
+          const newPath = pickRandomPath();
+          loadAndPlayVideo(inactiveVideo, newPath);
+      
+          // クロスフェード開始
+          crossFade();
         }
-
+      
         // ⑤ ランダムに動画パスを選ぶ関数
         function pickRandomPath() {
-        const index = Math.floor(Math.random() * videoPaths.length);
-        return videoPaths[index];
+          const index = Math.floor(Math.random() * videoPaths.length);
+          return videoPaths[index];
         }
-
+      
         // ⑥ video要素にsrcを指定して再生開始
         function loadAndPlayVideo(videoElem, path) {
-        videoElem.src = path;
-        videoElem.currentTime = 0;
-        videoElem.play().catch(err => {
+          videoElem.src = path;
+          videoElem.currentTime = 0;
+          videoElem.play().catch(err => {
             console.log("動画再生エラー:", err);
-        });
+          });
         }
-
+      
         // ⑦ クロスフェード処理
         function crossFade() {
-        // inactiveVideoを最前面にフェードイン、activeVideoをフェードアウト
-        // 1) inactiveVideoを一旦透明からアクティブにする
-        inactiveVideo.classList.add("active");
-        // 2) activeVideoを非アクティブにする（フェードアウト）
-        activeVideo.classList.remove("active");
-
-        // クロスフェード完了後に参照を入れ替える（setTimeoutで行う例）
-        setTimeout(() => {
+          // inactiveVideoを最前面にフェードイン、activeVideoをフェードアウト
+          // 1) inactiveVideoを一旦透明からアクティブにする
+          inactiveVideo.classList.add("active");
+          // 2) activeVideoを非アクティブにする（フェードアウト）
+          activeVideo.classList.remove("active");
+      
+          // クロスフェード完了後に参照を入れ替える（setTimeoutで行う例）
+          setTimeout(() => {
             // 再生し終わった oldActive は停止しておく（念のため）
             activeVideo.pause();
+      
             // 動画要素を入れ替える
             const temp = activeVideo;
             activeVideo = inactiveVideo;
             inactiveVideo = temp;
-        }, CROSSFADE_DURATION * 3000);
+          }, CROSSFADE_DURATION * 3000);
         }
-
-
-
-
-
-
-
-    </script>
+      </script>
+      
 </body>
 
 </html>
