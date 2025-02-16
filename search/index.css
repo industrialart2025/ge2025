@@ -1,30 +1,186 @@
-.test-list {
-    margin-block-start: 100px;
+body {
+    font-family: sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #000000;
+    color: #ffffff;
+    max-width: 1158px; /* 必要に応じて最大幅を設定 */
+    margin: 0 auto; /* 親要素を中央に揃える */
 }
 
+.ex-list {
+    margin-bottom: 8px; /* 親要素を中央に揃える */
+    font-size: 40px;
+}
+
+.caution {
+    margin-bottom: 120px; /* 親要素を中央に揃える */
+}
+
+/* 「ジャンル・スタジオ」ボタンのスタイル */
 .button-container {
-    position: absolute;
-    top: 0;
-    left: 0;
-    padding: 10px;
-    opacity: 0.5;
+    display: flex;
+    margin-bottom: 40px;
 }
-
-.button-container-secondary {
-    position: absolute;
-    top: 0;
-    left: 0;
-    padding: 10px;
-    opacity: 0.5;
-    
-}
-
-
-.button-container-secondary {
-
-    border: none;
-    border-radius: 4px;
+.genre-button,
+.studio-button  {
+    background-color: black;
+    color: white;
+    border: 1px solid white;
+    padding: 8px 20px;
+    font-size: 16px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     cursor: pointer;
-    transition: background-color 0.3s ease;
-    margin-top: 16px;
+    width: 124px;
+}
+.genre-button {
+    border-radius: 8px 0 0 8px; /* 左上・左下のみ丸み */
+}
+.studio-button {
+    border-radius: 0 8px 8px 0; /* 右上・右下のみ丸み */
+}
+.genre-button:hover,
+.studio-button:hover {
+    background-color: white;
+    color: black;
+}
+
+/* たくさんの「ジャンル・スタジオ」ボタンのスタイル */
+.button-container-secondary {
+    display: flex;
+    flex-wrap: wrap; /* 折り返しを許可 */
+    margin-bottom: 120px;
+    gap: 0px; /* ボタン間の余白 */
+}
+.button-container-secondary button {
+    background-color: black;
+    color: white;
+    border: 1px solid white;
+    padding: 12px 30px;
+    font-size: 12px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    width: fit-content;
+}
+.button-container-secondary button:hover {
+    background-color: #e0e0e0;
+}
+
+/* 検索件数のスタイル */
+.search {
+    margin-bottom: 40px;
+}
+
+.contents {
+    display: flex;
+    flex-wrap: wrap; /* 折り返し可能に */
+    gap: 40px; /* カード間の余白 */
+    justify-content: flex-start; /* 左寄せ */
+    margin: 0 auto; /* 親要素を中央に揃える */
+    max-width: 1158px; /* 必要に応じて最大幅を設定 */
+    color: #000000;
+}
+
+.card {
+    width: 322px; /* 横幅を固定 */
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 15px;
+    background-color: #fff;
+}
+
+.title-container {
+    display: flex;
+    align-items: center; /* 垂直中央揃え */
+    text-align: left; /* 左揃え */
+    font-size: 12px;
+    font-weight: bold;
+    height: 48px;
+    margin-bottom: 15px;
+}
+
+.main-container {
+    display: flex;
+    flex-direction: row; /* 横並び */
+    height: auto;
+}
+
+.image-container img {
+    width: 156px; /* 画像サイズ調整 */
+    height: auto;
+    margin-right: 15px;
+}
+
+.info-container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    text-align: left;
+}
+
+/* 「詳しく見る」ボタンのスタイル */
+.button-custom {
+    background-color: rgb(255, 255, 255);
+    color: rgb(0, 0, 0);
+    border: 1px solid rgb(0, 0, 0);
+    padding: 4px 10px;
+    font-size: 12px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 3px;
+    margin-bottom: 15px;
+    cursor: pointer;
+    width: 112px;
+}
+
+.button-text {
+    padding-right: 2px; /* テキストと矢印の間のスペース */
+}
+
+.arrow-icon {
+    width: 12px; /* 矢印のサイズ調整 */
+    height: auto;
+}
+
+/* .button-custom:hover {
+    background-color: white;
+    color: black;
+} */
+
+.studio-genre-container {
+    display: flex;
+    flex-wrap: wrap; /* レスポンシブ対応 */
+    gap: 0px; /* 間隔を設定 */
+    margin-bottom: 15px;
+}
+
+/* 「スタジオ・ジャンル」タグのスタイル */
+.studio, .genre {
+    background-color: rgb(255, 255, 255);
+    color: #979797;
+    border: 1px solid #979797;
+    padding: 2px 5px;
+    font-size: 8px;
+    text-align: left;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 2px;
+    width: fit-content;
+}
+
+/* 展示番号のスタイル */
+.exnum{
+    font-size: 16px;
 }
