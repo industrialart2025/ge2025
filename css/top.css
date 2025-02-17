@@ -541,6 +541,9 @@ p{
     padding-bottom: 1rem;
 }
 
+.sns a{
+    text-decoration: underline;
+}
 
 
 /* //////////////////////////// COPYRIGHT ////////////////////////////*/
