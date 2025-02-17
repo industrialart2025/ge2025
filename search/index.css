@@ -282,6 +282,7 @@ h1 {
     border: 1px solid #979797;
     padding: 0px 5px;
     font-size: 8px;
+    font-feature-settings: "palt";
     text-align: left;
     display: flex;
     align-items: center;
@@ -297,6 +298,32 @@ h1 {
     font-size: 16px;
     line-height: 1.5;
 }
+
+/* //////////////////////////// COPYRIGHT ////////////////////////////*/
+
+/* ======== 一番下のとこ(今考えたらフッターでつくりゃよかった) ======== */
+.tyosakukenn {
+    max-width: 90vw;
+    margin: auto;
+    padding: calc(120vw / 14.4) 5vw;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    line-height: 2rem;
+    padding-top: 20vh;
+}
+ /* リンクの色を白に設定 */
+ .privacy-link {
+    color: white;
+    text-decoration: underline;
+}
+.tyosakukenn p{
+    font-size: 0.95rem;
+    font-family: "acumin-variable", "Roboto", "dnp-shuei-gothic-gin-std", "Noto Sans JP", sans-serif;
+    margin: 0;
+}
+
 
 /* ほんの少し小さなPC用 */
 @media screen and (max-width: 1290px) {
