@@ -95,6 +95,51 @@
       </div>
     </div>
   </main>
+
+  <script>
+    window.addEventListener("DOMContentLoaded", applyCornerToFirstInLastRow);
+    window.addEventListener("resize", applyCornerToFirstInLastRow);
+
+    function applyCornerToFirstInLastRow() {
+      const container = document.querySelector(".studio-genre-container");
+      if (!container) return;
+
+      const items = container.querySelectorAll(".studio, .genre");
+      if (!items.length) return;
+
+      // いったん全ての要素から「最後の段の先頭用クラス」を外す
+      items.forEach(el => el.classList.remove("first-in-last-row"));
+
+      // 各要素の top 座標をチェックし、一番下にある行の top を特定
+      let maxTop = -Infinity;
+      items.forEach(el => {
+        const rect = el.getBoundingClientRect();
+        if (rect.top > maxTop) {
+          maxTop = rect.top;
+        }
+      });
+
+      // 「最後の行」に属する要素を抽出し、その中から最も left が小さい要素を先頭とみなす
+      let firstElementInLastRow = null;
+      let minLeft = Infinity;
+
+      items.forEach(el => {
+        const rect = el.getBoundingClientRect();
+        // ある程度の誤差を許容するため、rect.top === maxTop だけでなく小さめ誤差で判定してもOK
+        if (Math.abs(rect.top - maxTop) < 1) {
+          if (rect.left < minLeft) {
+            minLeft = rect.left;
+            firstElementInLastRow = el;
+          }
+        }
+      });
+
+      // 最後の行が見つかったら、その先頭要素にクラス付与
+      if (firstElementInLastRow) {
+        firstElementInLastRow.classList.add("first-in-last-row");
+      }
+    }
+  </script>
 </body>
 
 </html>
