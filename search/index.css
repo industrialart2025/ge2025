@@ -89,6 +89,7 @@ h1 {
     align-items: center;
     justify-content: center;
     cursor: pointer;
+    margin-right: -1px;  /* 仕切りを1pxに */
 }
 .genre-button {
     border-radius: 8px 0 0 8px; /* 左上・左下のみ丸み */
@@ -122,6 +123,8 @@ h1 {
     justify-content: center;
     cursor: pointer;
     width: fit-content;
+    margin-right: -1px;  /* 仕切りを1pxに */
+    margin-bottom: -1px; /* 仕切りを1pxに */
 }
 .button-container-secondary button:hover {
     background-color: #e0e0e0;
