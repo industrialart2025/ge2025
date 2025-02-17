@@ -3,13 +3,13 @@ html{
 }
 
 body {
-    font-family: sans-serif;
-    margin: 0;
+    font-family: "dnp-shuei-gothic-gin-std", sans-serif;
+    font-weight: 400;
     padding: 0;
     background-color: #000000;
     color: #ffffff;
     width:90%;
-    max-width: 1158px; /* 必要に応じて最大幅を設定 */
+    max-width: 1154px; /* 必要に応じて最大幅を設定 */
     margin: 0 auto; /* 親要素を中央に揃える */
 }
 
@@ -40,6 +40,7 @@ h1 {
     border: 1px solid white;
     padding: 8px 30px;
     font-size: 16px;
+    font-family: "dnp-shuei-gothic-gin-std";
     text-align: center;
     display: flex;
     align-items: center;
@@ -62,7 +63,7 @@ h1 {
 .button-container-secondary {
     display: flex;
     flex-wrap: wrap; /* 折り返しを許可 */
-    margin-bottom: 120px;
+    margin-bottom: calc(120vw/1440*100);
     gap: 0px; /* ボタン間の余白 */
 }
 .button-container-secondary button {
@@ -71,6 +72,7 @@ h1 {
     border: 1px solid white;
     padding: calc(12vw/1440*100) calc(24vw/1440*100);
     font-size: calc(12vw/1440*100);
+    font-family: "dnp-shuei-gothic-gin-std";
     text-align: center;
     display: flex;
     align-items: center;
@@ -129,7 +131,7 @@ h1 {
 .search {
     font-size: 12px;
     margin: 0 auto;
-    margin-bottom: 40px;
+    margin-bottom: calc(40vw/1440*100);
 }
 
 .contents {
@@ -139,12 +141,13 @@ h1 {
     justify-content: flex-start;
     margin: 0 auto; /* 親要素を中央に揃える */
     width:100%;
-    max-width: 1158px; /* 必要に応じて最大幅を設定 */
+    max-width: 1154px; /* 必要に応じて最大幅を設定 */
     color: #000000;
 }
 
 .card {
-    width: 322px; /* 横幅を固定 */
+    width: 326px; /* 横幅を固定 */
+    height: 215px;
     display: flex;
     flex-direction: column;
     border: 1px solid #ddd;
@@ -159,8 +162,12 @@ h1 {
     text-align: left; /* 左揃え */
     font-size: 12px;
     font-weight: bold;
-    height: 48px;
+    height: 40px;
     margin-bottom: 15px;
+}
+
+.title-container div {
+    line-height: 1.5;
 }
 
 .main-container {
@@ -170,7 +177,7 @@ h1 {
 }
 
 .image-container img {
-    width: 156px; /* 画像サイズ調整 */
+    width: 145px; /* 画像サイズ調整 */
     height: auto;
     margin-right: 15px;
 }
@@ -190,6 +197,7 @@ h1 {
     border: 1px solid rgb(0, 0, 0);
     padding: 4px 10px;
     font-size: 12px;
+    font-family: "dnp-shuei-gothic-gin-std";
     text-align: center;
     display: flex;
     align-items: center;
@@ -226,7 +234,7 @@ h1 {
     background-color: rgb(255, 255, 255);
     color: #979797;
     border: 1px solid #979797;
-    padding: 2px 5px;
+    padding: 0px 5px;
     font-size: 8px;
     text-align: left;
     display: flex;
@@ -239,18 +247,25 @@ h1 {
 /* 展示番号のスタイル */
 .exnum{
     font-size: 16px;
+    line-height: 1.5;
 }
 
 /* ほんの少し小さなPC用 */
 @media screen and (max-width: 1290px) {
     .search, .contents {
-        max-width:750px;
+        max-width: 746px;
+    }
+    .contents {
+        gap: 30px;
     }
 }
 
 @media screen and (max-width: 850px) {
     .search, .contents {
-        max-width:355px;
+        max-width:358px;
+    }
+    .contents {
+        gap: 16px;
     }
 }
 
@@ -261,6 +276,7 @@ h1 {
     }
     .caution {
         font-size: 8px;
+        margin-bottom: 64px;
     }
     .button-container {
         margin-bottom: 16px; /* 親要素を中央に揃える */
@@ -278,6 +294,7 @@ h1 {
         padding-bottom: 10px; /* スクロールバーの余白 */
         scrollbar-width: thin; /* Firefox用 */
         -ms-overflow-style: none; /* IE/Edge用 */
+        margin-bottom: 64px;
     }
     /* Webkit系ブラウザのスクロールバーを非表示に */
     .button-container-secondary::-webkit-scrollbar {
@@ -295,6 +312,7 @@ h1 {
     }
     .search {
         font-size: 8px;
+        margin-bottom: 16px;
     }
     .genre-group-1 button:first-child {
         border-top-left-radius: 10px; /* 左上の角を丸くする */
@@ -317,7 +335,6 @@ h1 {
         border-top-right-radius: 10px; /* 右上の角を丸くする */
         border-bottom-right-radius: 10px; /* 右上の角を丸くする */
     }
-    
     .studio-group-1 button:first-child {
         border-top-left-radius: 10px; /* 左上の角を丸くする */
         border-bottom-left-radius: 10px; /* 左上の角を丸くする */
