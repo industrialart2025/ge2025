@@ -24,109 +24,191 @@ async function getJson(filePath) {
     }
 }
 
-//jsonからli要素を描画する関数
+// JSON から HTML要素を描画する関数
 function htmlToElement(json) {
-    const eachItem = document.querySelector(".test-titles");
+    const container = document.querySelector(".contents");
+    const search = document.querySelector(".search");
 
-    eachItem.innerHTML = ''; // 親要素内の子要素をすべて削除
+    // 一度コンテナをクリアする
+    container.innerHTML = '';
 
-    // 検索結果の表示
-    const jsonLength = json.length; 
-    const searchResult = document.createElement("h3");
+    // 検索結果の表示を更新
+    search.innerHTML = '';
+    const jsonLength = json.length;
+    const searchResult = document.createElement("div");
     searchResult.textContent = `検索結果:${jsonLength}件`;
-    eachItem.appendChild(searchResult); 
+    search.appendChild(searchResult);
 
     // リストに追加
-    json.map(item => {
-        const exNumItem = document.createElement("li");
-        console.log("item",item.ex_number);
-        if(item.ex_number !== "#N/A"){
-            exNumItem.textContent = `# ${item.ex_number}`; // JSONデータのプロパティに合わせて修正
-        }else{
-            exNumItem.textContent = "# Web Only" 
-        }
-        eachItem.appendChild(exNumItem);
+    json.forEach(item => {
+        const card = document.createElement("div");
+        card.classList.add("card");
 
-        const listItem = document.createElement("li");
-        listItem.textContent = `タイトル:${item.title}`; // JSONデータのプロパティに合わせて修正
-        eachItem.appendChild(listItem);
+        // タイトルコンテナ
+        const titleContainer = document.createElement("div");
+        titleContainer.classList.add("title-container");
+        const titleItem = document.createElement("div");
+        titleItem.textContent = item.title;
+        titleContainer.appendChild(titleItem);
+        card.appendChild(titleContainer);
 
-        const studioItem = document.createElement("li");
-        studioItem.textContent = `スタジオ:${item.studio}`; // JSONデータのプロパティに合わせて修正
-        eachItem.appendChild(studioItem);
+        // メインコンテナ（画像＋情報）
+        const mainContainer = document.createElement("div");
+        mainContainer.classList.add("main-container");
 
-        const genreItem = document.createElement("li");
-        genreItem.textContent = `ジャンル:${item.genre}`; // JSONデータのプロパティに合わせて修正
-        eachItem.appendChild(genreItem);
+        // 画像コンテナ
+        const imageContainer = document.createElement("div");
+        imageContainer.classList.add("image-container");
+        const imgItem = document.createElement("img");
+        const fileId = extractFileId(item.image);
+        imgItem.src = `https://lh3.google.com/u/0/d/${fileId}`;
+        imgItem.alt = item.title;
+        imageContainer.appendChild(imgItem);
+        mainContainer.appendChild(imageContainer);
 
-        const link = document.createElement("a");
-        link.href = item.notion_URL
-        link.target = "_blank";
-        link.textContent = "くわしく見る";
-        eachItem.appendChild(link);
-        
+        // 情報コンテナ
+        const infoContainer = document.createElement("div");
+        infoContainer.classList.add("info-container");
 
-        const imgItem = document.createElement("img")
-        const fileId = extractFileId(item.image); // 画
-        imgItem.src = `https://lh3.google.com/u/0/d/${fileId}`; // 画像のURLを設定
-        eachItem.appendChild(imgItem);
+        // 詳細リンクボタン
+        const button = document.createElement("button");
+        button.classList.add("button-custom");
 
+        // テキストを追加
+        const buttonText = document.createElement("span");
+        buttonText.textContent = "詳しく見る";
+        buttonText.classList.add("button-text"); // クラスを追加
+
+        // 矢印アイコンを追加
+        const arrowIcon = document.createElement("img");
+        arrowIcon.src = "search/Arrow.svg"; // 矢印アイコンのパス
+        arrowIcon.alt = "矢印";
+        arrowIcon.classList.add("arrow-icon"); // スタイル用クラスを適用
+
+        // ボタンに要素を追加
+        button.appendChild(buttonText);
+        button.appendChild(arrowIcon);
+
+        // クリックでリンクを開く
+        button.addEventListener("click", () => {
+            window.open(item.notion_URL, "_blank");
+        });
+
+        infoContainer.appendChild(button);
+
+        // スタジオ & ジャンルのコンテナ
+        const studioGenreContainer = document.createElement("div");
+        studioGenreContainer.classList.add("studio-genre-container");
+
+        // スタジオ
+        const studioItem = document.createElement("div");
+        studioItem.textContent = item.studio;
+        studioItem.classList.add("studio");
+        studioGenreContainer.appendChild(studioItem);
+
+        // ジャンル（配列内の各要素をdivとして追加）
+        item.genre.forEach(genre => {
+            const genreItem = document.createElement("div");
+            genreItem.textContent = genre; // 各ジャンル名を表示
+            genreItem.classList.add("genre");
+            studioGenreContainer.appendChild(genreItem);
+        });
+
+        // スタジオ & ジャンルを infoContainer に追加
+        infoContainer.appendChild(studioGenreContainer);
+
+        // 展示番号
+        const exNumItem = document.createElement("div");
+        exNumItem.textContent = item.ex_number !== "#N/A" ? `# ${item.ex_number}` : "# Web Only";
+        exNumItem.classList.add("exnum");
+        infoContainer.appendChild(exNumItem);
+
+        mainContainer.appendChild(infoContainer);
+        card.appendChild(mainContainer);
+
+        // カードをコンテナに追加
+        container.appendChild(card);
     });
 }
 
-let selectedKey = "studio";
+
+
+let selectedKey = "genre"; // 初期値をジャンルに設定
 let currentFilter = null;
 
-//スタジオまたは、ジャンルを選択するボタンを作成する関数
-function selectChangeEither(selectKeys) {
-    const filterContainer = document.querySelector('.button-container');
-    document.body.appendChild(filterContainer);
+const keyMap = {
+    "ジャンル": "genre",
+    "スタジオ": "studio"
+};
 
-    const filterItem = ["studio", "genre"]
-    
-    filterItem.map(key => {
+// スタジオまたは、ジャンルを選択するボタンを作成する関数
+function selectChangeEither() {
+    const filterContainer = document.querySelector('.button-container');
+    filterContainer.innerHTML = ""; // 初期化（重複防止）
+
+    const filterItem = ["ジャンル", "スタジオ"];
+
+    filterItem.map(label => {
         const select = document.createElement("button");
-        select.textContent = key;
+        select.textContent = label;
+        select.classList.add(label === "ジャンル" ? "genre-button" : "studio-button");
+
         select.addEventListener("click", () => {
-            //デバッグログ
-            selectedKey = key;
+            selectedKey = keyMap[label];
             updateSecondaryButtons();
         });
+
         filterContainer.appendChild(select);
-    })
+    });
 
-    //初期状態ではスタジオを選択
-    selectedKey = "studio"
     updateSecondaryButtons();
-
 }
 
-//スタジオ及び、ジャンルの各値を選択するボタンを作成する関数
 function selectChangeDetail(selectList) {
     const container = document.querySelector('.button-container-secondary');
-   
-    container.innerHTML = ''; // 前のボタンをクリア   
+    container.innerHTML = ''; // 前のボタンをクリア
 
-    // すべて表示ボタンを追加
+    let groupSize = selectedKey === "genre" ? 9 : 5; // ジャンルは9つずつ、スタジオは5つずつ
+    let groupDiv = document.createElement("div");
+    const groupPrefix = selectedKey === "genre" ? "genre" : "studio"; // "genre" または "studio" に基づく接頭辞
+    groupDiv.classList.add("button-group", `${groupPrefix}-group-1`); // 最初のグループに接頭辞と番号を追加
+    container.appendChild(groupDiv);
+
+    let count = 0; // グループ内の要素数カウント
+    let groupCount = 1; // グループ番号をカウント
+
+    // すべて表示ボタンを追加（最初のグループに入れる）
     const allButton = document.createElement("button");
     allButton.textContent = "すべて表示";
     allButton.addEventListener("click", () => {
         currentFilter = null;
         updateArticleList();
     });
-    container.appendChild(allButton);
+    groupDiv.appendChild(allButton);
+    count++;
 
-    // フィルター用ボタンを追加
-    selectList.map(value => {
+    selectList.forEach((value, index) => {
+        // 指定した個数ごとに新しい div を作成
+        if (count % groupSize === 0) {
+            groupDiv = document.createElement("div");
+            groupDiv.classList.add("button-group", `${groupPrefix}-group-${++groupCount}`); // ジャンルとスタジオで異なるグループ名
+            container.appendChild(groupDiv);
+            count = 0;
+        }
+
         const button = document.createElement("button");
         button.textContent = value;
         button.addEventListener("click", () => {
             currentFilter = value;
             updateArticleList();
         });
-        container.appendChild(button);
+        groupDiv.appendChild(button);
+        count++;
     });
 }
+
+
+
 
 // 重複を削除する関数（ジャンルが配列の場合も対応）
 function listSet(json, key) {
@@ -161,9 +243,8 @@ function updateSecondaryButtons() {
     }
 }
 
-
 document.addEventListener("DOMContentLoaded", async () => {
-    const filePath = "./search/reserachList.tsv"; // TSVファイルのパス
+    const filePath = "./search/researchList.tsv"; // TSVファイルのパス
     jsonResult = await getJson(filePath);
     
     selectChangeEither(Object.keys(jsonResult[0]));
