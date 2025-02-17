@@ -531,8 +531,8 @@ p{
 
 /* //////////////////////////// SNS ////////////////////////////*/
 
-.sns {
-    max-width: calc(320vw / 14.4);
+.sns{
+    max-width: calc(280vw / 14.4);
     margin: 0 calc(140vw / 14.4);
     line-height: 1;
 }
@@ -541,10 +541,47 @@ p{
     padding-bottom: 1rem;
 }
 
-.sns a{
-    text-decoration: underline;
+.sns-logos{
+    display: flex;
+    justify-content: center;
+    gap: calc(15vw / 14.4);
+}
+.sns-x img{
+    width: calc(45vw / 14.4);
+    height: calc(45vw / 14.4);
+    padding-bottom: 2px;
+}
+.sns-instagram img{
+    width: calc(48vw / 14.4);
+    height: calc(48vw / 14.4);
+}
+.sns-logos a{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: calc(80vw / 14.4);
+    height: calc(80vw / 14.4);
+}
+.sns a:hover {
+    filter: invert(12%) sepia(10%) saturate(0%) hue-rotate(194deg) brightness(92%) contrast(91%);
+    transition: 0.2s ease-in-out;
 }
 
+
+@media screen and (max-width: 768px) {
+    .sns-logos a{
+        width: 80px;
+        height: 80px;
+    }
+    .sns-x img{
+        width: 45px;
+        height: 45px;
+    }
+    .sns-instagram img{
+        width: 48px;
+        height: 48px;
+    }
+}
 
 /* //////////////////////////// COPYRIGHT ////////////////////////////*/
 
@@ -638,7 +675,7 @@ p{
     .sns .sns-in{
         padding: 0 calc(16vw / 3.9);
         width: 100%;
-        max-width: 500px;
+        /* max-width: 500px; */
     }
 
     .event-details, .icon-details {
@@ -657,8 +694,8 @@ p{
     }
 
     .responsive-iframe {
-        width: calc(350vw / 3.9);
-        height: calc(350vw / 3.9);
+        width: calc(358vw / 3.9);
+        height: calc(358vw / 3.9);
         max-width: 500px;
         max-height: 500px;
     }
