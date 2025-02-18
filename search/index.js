@@ -81,7 +81,7 @@ function htmlToElement(json) {
 
         // 矢印アイコンを追加
         const arrowIcon = document.createElement("img");
-        arrowIcon.src = "search/Arrow.svg"; // 矢印アイコンのパス
+        arrowIcon.src = "Arrow.svg"; // 矢印アイコンのパス
         arrowIcon.alt = "矢印";
         arrowIcon.classList.add("arrow-icon"); // スタイル用クラスを適用
 
@@ -244,7 +244,7 @@ function updateSecondaryButtons() {
 }
 
 document.addEventListener("DOMContentLoaded", async () => {
-    const filePath = "./search/researchList.tsv"; // TSVファイルのパス
+    const filePath = "researchList.tsv"; // TSVファイルのパス
     jsonResult = await getJson(filePath);
     
     selectChangeEither(Object.keys(jsonResult[0]));
