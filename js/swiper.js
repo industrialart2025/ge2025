@@ -71,7 +71,7 @@ const mySwiper = new Swiper('.swiper', {
         
   document.addEventListener("DOMContentLoaded", async () => {
     // TSVファイルのパス（環境に合わせて修正）
-    const filePath = "../search/researchList.tsv";
+    const filePath = "search/researchList.tsv";
         
     // TSV を JSON に変換
     const jsonResult = await getJson(filePath);
