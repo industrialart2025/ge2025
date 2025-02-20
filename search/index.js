@@ -61,7 +61,8 @@ function htmlToElement(json) {
         imageContainer.classList.add("image-container");
         const imgItem = document.createElement("img");
         const fileId = extractFileId(item.image);
-        imgItem.src = `https://lh3.google.com/u/0/d/${fileId}`;
+        // imgItem.src = `https://lh3.google.com/u/0/d/${fileId}`;
+        imgItem.src = `https://drive.google.com/uc?export=view&id=${fileId}`;
         imgItem.alt = item.title;
         imageContainer.appendChild(imgItem);
         mainContainer.appendChild(imageContainer);

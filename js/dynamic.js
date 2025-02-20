@@ -19,15 +19,15 @@ document.addEventListener("DOMContentLoaded", async () => {
       // 画像要素を作成
       const img = document.createElement("img");
       const fileId = extractFileId(item.image);
-      img.src = `https://lh3.google.com/u/0/d/${fileId}`;
+      img.src = `https://drive.google.com/uc?export=view&id=${fileId}`;
       img.alt = item.title;
   
     // 遅延読み込み (lazy) を Swiper とあわせたい場合は data-src を使う
-      img.classList.add("swiper-lazy");
-      img.setAttribute("data-src", `https://lh3.google.com/u/0/d/${fileId}`);
-      const preloader = document.createElement("div");
-      preloader.classList.add("swiper-lazy-preloader");
-      slide.appendChild(preloader);
+    //   img.classList.add("swiper-lazy");
+    //   img.setAttribute("data-src", `https://drive.google.com/uc?export=view&id=${fileId}`);
+    //   const preloader = document.createElement("div");
+    //   preloader.classList.add("swiper-lazy-preloader");
+    //   slide.appendChild(preloader);
   
       // スライドに画像を挿入
       slide.appendChild(img);
@@ -38,6 +38,6 @@ document.addEventListener("DOMContentLoaded", async () => {
     mySwiper.update();
   
     // Swiperのlazyオプションを使っているなら、さらに
-    mySwiper.lazy.load(); // 必要に応じて
+    // mySwiper.lazy.load(); // 必要に応じて
     
   });

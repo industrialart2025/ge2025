@@ -1,18 +1,27 @@
 // swiper.js
+// const mySwiper = new Swiper('.swiper', {
+//     lazy: {
+//         loadPrevNext: true,
+//         loadPrevNextAmount: 2,
+//     },
+//     loop: true,
+//     slidesPerView: 1,
+//     spaceBetween: 10,
+//     speed: 5000,
+//     effect: "fade",
+//     autoplay: {
+//       delay: 3000,
+//     },
+//     allowTouchMove: false,
+//   });
 const mySwiper = new Swiper('.swiper', {
-    lazy: {
-        loadPrevNext: true,
-        loadPrevNextAmount: 2,
-    },
     loop: true,
     slidesPerView: 1,
     spaceBetween: 10,
-    speed: 5000,
-    effect: "fade",
+    speed: 1000,
     autoplay: {
       delay: 3000,
     },
-    allowTouchMove: false,
   });
 
 
@@ -116,7 +125,7 @@ const mySwiper = new Swiper('.swiper', {
         // lazyロード用 <img data-src="..." class="swiper-lazy">
         const img = document.createElement("img");
         img.classList.add("swiper-lazy");
-        img.setAttribute("data-src", `https://lh3.google.com/u/0/d/${fileId}`);
+        img.setAttribute("data-src", `https://drive.google.com/uc?export=view&id=${fileId}`);
         img.alt = item.title || "No Title";
 
         // ローディング中表示するプリローダ
