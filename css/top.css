@@ -75,10 +75,12 @@ nav {
     transition: all .5s;
     z-index: 3;
     opacity: 0;
+    pointer-events: none;
 }
 .open nav {
     right: 0;
     opacity: 1;
+    pointer-events:all;
 }
 nav .inner {
     padding-top: 96px;
