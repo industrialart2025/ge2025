@@ -61,8 +61,9 @@ function htmlToElement(json) {
         imageContainer.classList.add("image-container");
         const imgItem = document.createElement("img");
         const fileId = extractFileId(item.image);
-        // imgItem.src = `https://lh3.google.com/u/0/d/${fileId}`;
-        imgItem.src = `https://drive.google.com/uc?export=view&id=${fileId}`;
+        // imgItem.src = `https://lh3.google.com/u/0/d/${fileId}`; ←webpをjpgで読み込んでしまう
+        // imgItem.src = `https://drive.google.com/uc?export=view&id=${fileId}`;　←webpでよみこむが、403エラーで画像表示せず
+        imgItem.src = `https://lh3.googleusercontent.com/d/${fileId}`; // ←今のところこれ
         imgItem.alt = item.title;
         imageContainer.appendChild(imgItem);
         mainContainer.appendChild(imageContainer);
@@ -154,7 +155,20 @@ function selectChangeEither() {
         select.textContent = label;
         select.classList.add(label === "ジャンル" ? "genre-button" : "studio-button");
 
+        // 初期状態：背景黒、文字白
+        select.style.backgroundColor = "black";
+        select.style.color = "white";
+
         select.addEventListener("click", () => {
+            // すべてのボタンをリセット
+            Array.from(filterContainer.children).forEach(btn => {
+                btn.style.backgroundColor = "black";
+                btn.style.color = "white";
+            });
+            // クリックしたボタンのみアクティブ状態に
+            select.style.backgroundColor = "white";
+            select.style.color = "black";
+
             selectedKey = keyMap[label];
             updateSecondaryButtons();
         });
@@ -162,6 +176,13 @@ function selectChangeEither() {
         filterContainer.appendChild(select);
     });
 
+    // 初期表示時、最初のボタンをアクティブにする例
+    const firstButton = filterContainer.querySelector("button");
+    if (firstButton) {
+        firstButton.style.backgroundColor = "white";
+        firstButton.style.color = "black";
+    }
+    
     updateSecondaryButtons();
 }
 
@@ -181,8 +202,20 @@ function selectChangeDetail(selectList) {
     // すべて表示ボタンを追加（最初のグループに入れる）
     const allButton = document.createElement("button");
     allButton.textContent = "すべて表示";
+    // 初期状態：背景黒、文字白
+    allButton.style.backgroundColor = "black";
+    allButton.style.color = "white";
     allButton.addEventListener("click", () => {
         currentFilter = null;
+        // 同じグループ内のボタンをすべてリセット
+        const siblingButtons = container.querySelectorAll("button");
+        siblingButtons.forEach(btn => {
+            btn.style.backgroundColor = "black";
+            btn.style.color = "white";
+        });
+        // クリックしたボタンをアクティブに
+        allButton.style.backgroundColor = "white";
+        allButton.style.color = "black";
         updateArticleList();
     });
     groupDiv.appendChild(allButton);
@@ -199,8 +232,20 @@ function selectChangeDetail(selectList) {
 
         const button = document.createElement("button");
         button.textContent = value;
+        // 初期状態：背景黒、文字白
+        button.style.backgroundColor = "black";
+        button.style.color = "white";
         button.addEventListener("click", () => {
             currentFilter = value;
+            // 同じコンテナ内の全ボタンをリセット
+            const siblingButtons = container.querySelectorAll("button");
+            siblingButtons.forEach(btn => {
+                btn.style.backgroundColor = "black";
+                btn.style.color = "white";
+            });
+            // クリックしたボタンだけアクティブに
+            button.style.backgroundColor = "white";
+            button.style.color = "black";
             updateArticleList();
         });
         groupDiv.appendChild(button);

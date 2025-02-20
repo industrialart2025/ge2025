@@ -128,6 +128,7 @@ h1 {
 }
 .button-container-secondary button:hover {
     background-color: #e0e0e0;
+    color: black;
 }
 
 .button-group {
