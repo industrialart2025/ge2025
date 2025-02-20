@@ -228,19 +228,31 @@
           <!-- Web Exhibitionセクション -->
           <section class="web-exhibition" id="web-exhibition">
             <!-- 日本語 -->
+            <p class="small-text">Web Exhibition</p>
+            
+            <div class="swiper research-swiper">
+                <div class="swiper-wrapper">
+                    <!-- 例として3スライド分だけ置いてある -->
+                    <div class="swiper-slide">
+                        <div class="image-placeholder">Slide 1 placeholder</div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="image-placeholder">Slide 2 placeholder</div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="image-placeholder">Slide 3 placeholder</div>
+                    </div>
+                </div>
+            </div>
+
             <div class="lang-ja">
-              <p class="small-text">Web Exhibition</p>
-              <div class="image-placeholder hihyouji">研究画像のスライドショー（1920×1080）</div>
-              <button class="button-custom hihyouji">制作/研究一覧を見る</button>
-              <p class="small-small-text">会場に足を運べない方々にも制作や研究をご覧いただけるよう、Web展として研究や作品の概要を掲載予定です。</p>
-              <a class="small-small-text" href="search/index.html"> 研究/制作一覧はこちらから</a>
+                <button class="button-custom" onclick="location.href='search/index.html'">制作/研究一覧を見る</button>
+                <p class="small-small-text">会場に足を運べない方々にも制作や研究をご覧いただけるよう、Web展として研究や作品の概要を掲載予定です。</p>
             </div>
             <!-- 英語 -->
             <div class="lang-en">
-              <p class="small-text">Web Exhibition</p>
-              <div class="image-placeholder hihyouji">Research image slideshow (1920×1080)</div>
-              <button class="button-custom hihyouji">View List of Works/Research</button>
-              <p class="small-small-text">To allow those who cannot visit the exhibition to see the production and research, we plan to post an overview of the research and works as a web exhibition.</p>
+                <button class="button-custom" onclick="location.href='search/index.html'">Works & Research</button>
+                <p class="small-small-text">To allow those who cannot visit the exhibition to see the production and research, we plan to post an overview of the research and works as a web exhibition.</p>
             </div>
           </section>
       
@@ -538,7 +550,9 @@
           }, CROSSFADE_DURATION * 3000);
         }
     </script>
-      
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="js/swiper.js"></script>
+    <script src="js/dynamic.js"></script>
 </body>
 
 </html>
