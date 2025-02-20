@@ -158,16 +158,16 @@ function selectChangeEither() {
 
         // 初期状態：背景黒、文字白
         select.style.backgroundColor = "black";
-        select.style.color = "white";
+        select.style.color = "#f1f1f1";
 
         select.addEventListener("click", () => {
             // すべてのボタンをリセット
             Array.from(filterContainer.children).forEach(btn => {
                 btn.style.backgroundColor = "black";
-                btn.style.color = "white";
+                btn.style.color = "#f1f1f1";
             });
             // クリックしたボタンのみアクティブ状態に
-            select.style.backgroundColor = "white";
+            select.style.backgroundColor = "#f1f1f1";
             select.style.color = "black";
 
             selectedKey = keyMap[label];
@@ -180,7 +180,7 @@ function selectChangeEither() {
     // 初期表示時、最初のボタンをアクティブにする例
     const firstButton = filterContainer.querySelector("button");
     if (firstButton) {
-        firstButton.style.backgroundColor = "white";
+        firstButton.style.backgroundColor = "#f1f1f1";
         firstButton.style.color = "black";
     }
     
@@ -205,17 +205,17 @@ function selectChangeDetail(selectList) {
     allButton.textContent = "すべて表示";
     // 初期状態：背景黒、文字白
     allButton.style.backgroundColor = "black";
-    allButton.style.color = "white";
+    allButton.style.color = "#f1f1f1";
     allButton.addEventListener("click", () => {
         currentFilter = null;
         // 同じグループ内のボタンをすべてリセット
         const siblingButtons = container.querySelectorAll("button");
         siblingButtons.forEach(btn => {
             btn.style.backgroundColor = "black";
-            btn.style.color = "white";
+            btn.style.color = "#f1f1f1";
         });
         // クリックしたボタンをアクティブに
-        allButton.style.backgroundColor = "white";
+        allButton.style.backgroundColor = "#f1f1f1";
         allButton.style.color = "black";
         updateArticleList();
     });
@@ -235,17 +235,17 @@ function selectChangeDetail(selectList) {
         button.textContent = value;
         // 初期状態：背景黒、文字白
         button.style.backgroundColor = "black";
-        button.style.color = "white";
+        button.style.color = "#f1f1f1";
         button.addEventListener("click", () => {
             currentFilter = value;
             // 同じコンテナ内の全ボタンをリセット
             const siblingButtons = container.querySelectorAll("button");
             siblingButtons.forEach(btn => {
                 btn.style.backgroundColor = "black";
-                btn.style.color = "white";
+                btn.style.color = "#f1f1f1";
             });
             // クリックしたボタンだけアクティブに
-            button.style.backgroundColor = "white";
+            button.style.backgroundColor = "#f1f1f1";
             button.style.color = "black";
             updateArticleList();
         });

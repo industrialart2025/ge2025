@@ -6,7 +6,7 @@ body {
     margin: 0;
     padding: 0; 
     background-color: #000000;
-    color: #ffffff; 
+    color: #F1F1F1; 
 }
 
 .main-content{
@@ -79,8 +79,8 @@ h1 {
 .genre-button,
 .studio-button  {
     background-color: black;
-    color: white;
-    border: 1px solid white;
+    color: #F1F1F1;
+    border: 1px solid #F1F1F1;
     padding: 8px 30px;
     font-size: 16px;
     font-family: "dnp-shuei-gothic-gin-std";
@@ -99,8 +99,8 @@ h1 {
 }
 .genre-button:hover,
 .studio-button:hover {
-    background-color: white;
-    color: black;
+    background-color: #F1F1F1!important; ;
+    color: black!important; ;
 }
 
 /* たくさんの「ジャンル・スタジオ」ボタンのスタイル */
@@ -112,8 +112,8 @@ h1 {
 }
 .button-container-secondary button {
     background-color: black;
-    color: white;
-    border: 1px solid white;
+    color: #F1F1F1;
+    border: 1px solid #F1F1F1;
     padding: calc(12vw/1440*100) calc(24vw/1440*100);
     font-size: calc(12vw/1440*100);
     font-family: "dnp-shuei-gothic-gin-std";
@@ -127,8 +127,8 @@ h1 {
     margin-bottom: -1px; /* 仕切りを1pxに */
 }
 .button-container-secondary button:hover {
-    background-color: #e0e0e0;
-    color: black;
+    background-color: #F1F1F1!important; 
+    color: black!important; 
 }
 
 .button-group {
@@ -265,7 +265,7 @@ h1 {
 }
 
 /* .button-custom:hover {
-    background-color: white;
+    background-color: #F1F1F1;
     color: black;
 } */
 
@@ -316,7 +316,7 @@ h1 {
 }
  /* リンクの色を白に設定 */
  .privacy-link {
-    color: white;
+    color: #F1F1F1;
     text-decoration: underline;
 }
 .tyosakukenn p{
