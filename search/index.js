@@ -63,7 +63,8 @@ function htmlToElement(json) {
         const fileId = extractFileId(item.image);
         // imgItem.src = `https://lh3.google.com/u/0/d/${fileId}`; ←webpをjpgで読み込んでしまう
         // imgItem.src = `https://drive.google.com/uc?export=view&id=${fileId}`;　←webpでよみこむが、403エラーで画像表示せず
-        imgItem.src = `https://lh3.googleusercontent.com/d/${fileId}`; // ←今のところこれ
+        // imgItem.src = `https://lh3.googleusercontent.com/d/${fileId}`; // 
+        imgItem.src = `https://drive.google.com/thumbnail?id=${fileId}`; //←今のところこれ
         imgItem.alt = item.title;
         imageContainer.appendChild(imgItem);
         mainContainer.appendChild(imageContainer);
